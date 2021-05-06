@@ -94,12 +94,12 @@ public class GameUI : MonoBehaviour
     public void EnableConstruction()
     {
         constructionButton.interactable = true;
-        shopButton.GetComponentInChildren<Text>().enabled = true;
+        constructionButton.GetComponentInChildren<Text>().enabled = true;
     }
 
     public void DisableConstruction()
     {
         constructionButton.interactable = false;
-        shopButton.GetComponentInChildren<Text>().enabled = false;
+        constructionButton.GetComponentInChildren<Text>().enabled = false;
     }
 }

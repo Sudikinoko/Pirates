@@ -8,6 +8,7 @@ TagManager:
   - CameraConstructionPoint
   - CameraZoomInPoint
   - CameraZoomOutPoint
+  - Base
   layers:
   - Default
   - TransparentFX
