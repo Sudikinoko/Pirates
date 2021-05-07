@@ -32,11 +32,15 @@ public class PlayerController : MonoBehaviour
         rigidBody = transform.GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetMouseButton(0))
         {
-            ship.MoveTo(GetMousePositionOnXZPlane());
+            Vector3 moveTo = GetMousePositionOnXZPlane();
+            if (!moveTo.Equals(Vector3.zero))
+            {
+                ship.MoveTo(moveTo);
+            }
         }
     }
 

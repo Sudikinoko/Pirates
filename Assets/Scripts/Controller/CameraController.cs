@@ -32,6 +32,12 @@ public class CameraController : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.5f;
 
+    Vector3 touchStart;
+    Vector3 touchStart2;
+
+    public float zoomOutMin = 1;
+    public float zoomOutMax = 800;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,45 +60,79 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SetCameraState(CameraState.ZoomedOut);
-        }
-        else if (Input.GetKeyDown(KeyCode.O))
-        {
-            SetCameraState(CameraState.ZoomedIn);
-        }
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
-            SetCameraState(CameraState.ConstructMode);
-        }
-
         cameraUpdate();
 
+    }
+
+    void Zoom()
+    {
+        //Nur beim ersten Frame true
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //}
+        if (Input.touchCount == 2)
+        {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+
+            float difference = currentMagnitude - prevMagnitude;
+
+            ZoomInOut(difference * 0.1f);
+            ZoomInOut(Input.GetAxis("Mouse ScrollWheel"));
+        }
+    }
+
+    void ZoomInOut(float increment)
+    {
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomOutMin, zoomOutMax);
+    }
+
+    private void Pan()
+    {
+        //Nur beim ersten Frame true
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Camera.main.transform.position += direction;
+        }
 
     }
 
 
-    private void ZoomOutUpdate()
+    private void ZoomedOutUpdate()
     {
         transform.position = Vector3.Slerp(transform.position, playerTransform.position + zoomedOutTransform.localPosition * 5f, smoothFactor);
-
-
         transform.rotation = Quaternion.Lerp(transform.rotation, zoomedOutTransform.localRotation, transitionRotationSpeed * Time.deltaTime);
+        Zoom();
     }
-    private void ZoomInUpdate()
+    private void ZoomedInUpdate()
     {
         transform.position = Vector3.Slerp(transform.position, zoomedInTransform.position, smoothFactor);
 
-        transform.LookAt(playerTransform);
+        //transform.LookAt(playerTransform);
+
+        Vector3 dir = playerTransform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * transitionRotationSpeed);
 
     }
 
     private void ConstructModeUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, constructionModeTransform.position, smoothFactor);
-
         transform.rotation = constructionModeTransform.rotation;
+        Zoom();
     }
 
 
@@ -103,12 +143,17 @@ public class CameraController : MonoBehaviour
         switch (cameraState)
         {
             case CameraState.ZoomedOut:
-                cameraUpdate = ZoomOutUpdate;
+                Camera.main.orthographic = true;
+                Camera.main.orthographicSize = 150f;
+                cameraUpdate = ZoomedOutUpdate;
                 break;
             case CameraState.ZoomedIn:
-                cameraUpdate = ZoomInUpdate;
+                Camera.main.orthographic = false;
+                cameraUpdate = ZoomedInUpdate;
                 break;
             case CameraState.ConstructMode:
+                Camera.main.orthographic = true;
+                Camera.main.orthographicSize = 10f;
                 cameraUpdate = ConstructModeUpdate;
                 break;
         }

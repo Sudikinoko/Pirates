@@ -68,6 +68,7 @@ public class Ship : MonoBehaviour, IHittable
     public Transform zoomInPosition;
     public Transform constructionModePosition;
 
+    private Vector3 lastPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -86,11 +87,19 @@ public class Ship : MonoBehaviour, IHittable
         InitiateRigidbody();
         InstantiateWaterSplashEffect();
         InitiateCameraPoints();
+
+        lastPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if ((transform.position - lastPosition).magnitude >= 10)
+        {
+            lastPosition = transform.position;
+            InstantiateWaterSplashEffect();
+        }
+
         RenderHealthBar();
     }
 
@@ -117,7 +126,6 @@ public class Ship : MonoBehaviour, IHittable
 
     void InstantiateWaterSplashEffect()
     {
-
         if (waterEffect != null)
         {
             GameObject waterSplash = Instantiate(waterEffect, transform.position, Quaternion.identity);
@@ -140,6 +148,7 @@ public class Ship : MonoBehaviour, IHittable
             rigidBody.drag = drag;
             rigidBody.angularDrag = angularDrag;
             rigidBody.useGravity = false;
+            rigidBody.interpolation = RigidbodyInterpolation.Interpolate;
             rigidBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         }
     }
@@ -182,16 +191,16 @@ public class Ship : MonoBehaviour, IHittable
 
         if (!constructionMode)
         {
-            Turn(targetRotation);
-
             Accelerate(targetDirection);
+
+            Turn(targetRotation);
         }
     }
 
     public void Accelerate(Vector3 targetDirection)
     {
         Vector3 forceDirection = Vector3.ClampMagnitude(Vector3.Project(targetDirection, transform.forward), 100f);
-        rigidBody.AddForce(forceDirection * acceleration * Time.deltaTime, ForceMode.Force);
+        rigidBody.AddForce(forceDirection * acceleration * Time.fixedDeltaTime, ForceMode.Force);
 
     }
 
@@ -200,7 +209,7 @@ public class Ship : MonoBehaviour, IHittable
         float maxSpeedRate = 1 - Mathf.Clamp01(rigidBody.velocity.magnitude / speed);
 
 
-        Vector3 rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turningRate * turnHabit.Evaluate(maxSpeedRate)).eulerAngles;
+        Vector3 rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * turningRate * turnHabit.Evaluate(maxSpeedRate)).eulerAngles;
         transform.rotation = Quaternion.Euler(xLocked ? 0f : rotation.x, yLocked ? 0f : rotation.y, zLocked ? 0f : rotation.z);
 
     }
