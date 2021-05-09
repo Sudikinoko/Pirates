@@ -28,6 +28,8 @@ public class Base : MonoBehaviour
             if (isShop)
             {
                 gameUI.EnableShop();
+                Camera.main.GetComponent<CameraController>().shopTransform = shop.transform;
+                ShopUI.instance.SetTarget(shop.transform);
             }
             if (isShipyard)
             {

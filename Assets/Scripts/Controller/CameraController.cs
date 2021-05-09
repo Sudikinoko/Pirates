@@ -75,11 +75,6 @@ public class CameraController : MonoBehaviour
 
     void Zoom()
     {
-        //Nur beim ersten Frame true
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //}
         if (Input.touchCount == 2)
         {
             Touch touchZero = Input.GetTouch(0);
@@ -94,8 +89,8 @@ public class CameraController : MonoBehaviour
             float difference = currentMagnitude - prevMagnitude;
 
             ZoomInOut(difference * 0.1f);
-            ZoomInOut(Input.GetAxis("Mouse ScrollWheel"));
         }
+        ZoomInOut(Input.GetAxis("Mouse ScrollWheel"));
     }
 
     void ZoomInOut(float increment)
@@ -129,8 +124,6 @@ public class CameraController : MonoBehaviour
     {
         transform.position = Vector3.Slerp(transform.position, zoomedInTransform.position, smoothFactorZoomedIn);
 
-        //transform.LookAt(playerTransform);
-
         Vector3 dir = playerTransform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * transitionRotationSpeed);
@@ -146,7 +139,7 @@ public class CameraController : MonoBehaviour
 
     private void ShopUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, shopTransform.position + shopTransform.forward * 10f, smoothFactorShop);
+        transform.position = Vector3.Lerp(transform.position, shopTransform.position + shopTransform.forward * 50f, smoothFactorShop);
 
         Vector3 dir = shopTransform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
