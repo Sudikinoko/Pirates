@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Ship))]
-[RequireComponent(typeof(PlayerStats))]
+[RequireComponent(typeof(Stats))]
 public class PlayerController : MonoBehaviour
 {
 

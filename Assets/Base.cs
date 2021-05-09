@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -10,7 +9,10 @@ public class Base : MonoBehaviour
     public bool isShop = true;
     public bool isShipyard = true;
 
-    public List<EquipmentBlueprint> blueprintsToSell;
+    public Shop shop;
+
+    //Moved to Shop Script
+    //public List<EquipmentBlueprint> blueprintsToSell;
 
     // Start is called before the first frame update
     void Start()

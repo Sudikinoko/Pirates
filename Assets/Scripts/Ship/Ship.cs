@@ -73,16 +73,7 @@ public class Ship : MonoBehaviour, IHittable
     // Start is called before the first frame update
     void Start()
     {
-        health = startHealth;
-        armor = startArmor;
-        regeneration = startRegeneration;
-        speed = startSpeed;
-        acceleration = startAcceleration;
-        turningRate = startTurningRate;
-        mass = startMass;
-        drag = startDrag;
-        angularDrag = startAngularDrag;
-
+        InitiateStartValues();
         InstantiateHealthBar();
         InitiateRigidbody();
         InstantiateWaterSplashEffect();
@@ -101,6 +92,19 @@ public class Ship : MonoBehaviour, IHittable
         }
 
         RenderHealthBar();
+    }
+
+    void InitiateStartValues()
+    {
+        health = startHealth;
+        armor = startArmor;
+        regeneration = startRegeneration;
+        speed = startSpeed;
+        acceleration = startAcceleration;
+        turningRate = startTurningRate;
+        mass = startMass;
+        drag = startDrag;
+        angularDrag = startAngularDrag;
     }
 
     void InitiateCameraPoints()

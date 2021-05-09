@@ -4,7 +4,8 @@ public enum CameraState
 {
     ZoomedOut,
     ZoomedIn,
-    ConstructMode
+    ConstructMode,
+    Shop
 }
 
 public class CameraController : MonoBehaviour
@@ -15,6 +16,8 @@ public class CameraController : MonoBehaviour
 
 
     CameraState cameraState = CameraState.ZoomedOut;
+
+    public Transform shopTransform;
 
     public Transform playerTransform;
 
@@ -30,7 +33,13 @@ public class CameraController : MonoBehaviour
     public float rotationSpeed = 100f;
 
     [Range(0.01f, 1.0f)]
-    public float smoothFactor = 0.5f;
+    public float smoothFactorZoomedOut = 0.5f;
+    [Range(0.01f, 1.0f)]
+    public float smoothFactorZoomedIn = 0.5f;
+    [Range(0.01f, 1.0f)]
+    public float smoothFactorConstruction = 0.5f;
+    [Range(0.01f, 1.0f)]
+    public float smoothFactorShop = 0.5f;
 
     Vector3 touchStart;
     Vector3 touchStart2;
@@ -112,13 +121,13 @@ public class CameraController : MonoBehaviour
 
     private void ZoomedOutUpdate()
     {
-        transform.position = Vector3.Slerp(transform.position, playerTransform.position + zoomedOutTransform.localPosition * 5f, smoothFactor);
+        transform.position = Vector3.Slerp(transform.position, playerTransform.position + zoomedOutTransform.localPosition * 5f, smoothFactorZoomedOut);
         transform.rotation = Quaternion.Lerp(transform.rotation, zoomedOutTransform.localRotation, transitionRotationSpeed * Time.deltaTime);
         Zoom();
     }
     private void ZoomedInUpdate()
     {
-        transform.position = Vector3.Slerp(transform.position, zoomedInTransform.position, smoothFactor);
+        transform.position = Vector3.Slerp(transform.position, zoomedInTransform.position, smoothFactorZoomedIn);
 
         //transform.LookAt(playerTransform);
 
@@ -130,9 +139,18 @@ public class CameraController : MonoBehaviour
 
     private void ConstructModeUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, constructionModeTransform.position, smoothFactor);
+        transform.position = Vector3.Lerp(transform.position, constructionModeTransform.position, smoothFactorConstruction);
         transform.rotation = constructionModeTransform.rotation;
         Zoom();
+    }
+
+    private void ShopUpdate()
+    {
+        transform.position = Vector3.Lerp(transform.position, shopTransform.position + shopTransform.forward * 10f, smoothFactorShop);
+
+        Vector3 dir = shopTransform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * transitionRotationSpeed);
     }
 
 
@@ -155,6 +173,10 @@ public class CameraController : MonoBehaviour
                 Camera.main.orthographic = true;
                 Camera.main.orthographicSize = 10f;
                 cameraUpdate = ConstructModeUpdate;
+                break;
+            case CameraState.Shop:
+                Camera.main.orthographic = false;
+                cameraUpdate = ShopUpdate;
                 break;
         }
     }

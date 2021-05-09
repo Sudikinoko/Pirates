@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour, ICollector
 
     public static PlayerStats instance;
 
-    private float money;
+    public float money;
 
     public int level;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
 
-    List<EquipmentBlueprint> equipmentBlueprints;
+    public List<EquipmentData> equipmentBlueprints = new List<EquipmentData>();
 
     EquipmentManager equipmentManager;
 
@@ -28,17 +28,17 @@ public class InventoryManager : MonoBehaviour
         equipmentManager.SetBlueprintToBuild(equipmentManager.standardBlueprintToBuild);
     }
 
-    public void AddEquipment(EquipmentBlueprint equipmentBlueprint)
+    public void AddEquipment(EquipmentData equipmentBlueprint)
     {
         equipmentBlueprints.Add(equipmentBlueprint);
     }
 
-    public void RemoveEquipment(EquipmentBlueprint equipmentBlueprint)
+    public void RemoveEquipment(EquipmentData equipmentBlueprint)
     {
         equipmentBlueprints.Remove(equipmentBlueprint);
     }
 
-    public List<EquipmentBlueprint> GetEquipmentList()
+    public List<EquipmentData> GetEquipmentList()
     {
         return equipmentBlueprints;
     }

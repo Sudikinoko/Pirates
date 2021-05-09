@@ -425,27 +425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f58f657f787494da38d0d7514831e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: c7fb67fc25e712d40b8624c13a015062, type: 2}
   weaponNode: {fileID: 0}
-  range: 250
-  dmg: 1
-  focusTarget: 1
-  turnAngle: 90
-  turnRate: 20
-  accuracy: 1
-  fireAngle: 5
-  mass: 1
-  isAutofire: 0
-  searchStrategy: 0
-  xLocked: 0
-  yLocked: 0
-  zLocked: 0
-  ammoPrefab: {fileID: 3730163994860281038, guid: 092d8e6b5e33d7246b3d3cdb4c2776b1,
-    type: 3}
-  fireRate: 2
-  fireCooldown: 0
-  laserweapon: 0
-  damageOverTime: 0
-  slowAmount: 0
   shootEffect: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
     type: 3}
   lineRenderer: {fileID: 0}

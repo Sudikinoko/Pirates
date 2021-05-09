@@ -18,43 +18,13 @@ public class Weapon : MonoBehaviour
     private Transform target;
     private Ship targetEnemy;
 
+    public WeaponData weaponData;
+
     private Quaternion localStartRotation;
+    [HideInInspector]
     public GameObject weaponNode;
 
-
-    [Header("Attributes")]
-    public float range;
-    public float dmg;
-    public bool focusTarget = true;
-
-
-    [Range(0f, 180f)]
-    public float turnAngle;
-    public float turnRate;
-    public float accuracy;
-    public float fireAngle = 10f;
-
-    public float mass;
-
-    public bool isAutofire;
-    public SearchStrategy searchStrategy = SearchStrategy.nearest;
-
-    [Header("Rotation Lock")]
-    public bool xLocked = false;
-    public bool yLocked = false;
-    public bool zLocked = false;
-
-    [Header("Use Bullets (default)")]
-    public GameObject ammoPrefab;
-    public float fireRate;
-    public float fireCooldown;
-
-
-    [Header("Use Laser")]
-    public bool laserweapon = false;
-
-    public float damageOverTime;
-    public float slowAmount;
+    float fireCooldown;
 
     [Header("Effects")]
     public GameObject shootEffect;
@@ -79,6 +49,7 @@ public class Weapon : MonoBehaviour
     {
         localStartRotation = partToRotate.localRotation;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        fireCooldown = 0f;
     }
 
     // Update is called once per frame
@@ -98,9 +69,9 @@ public class Weapon : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
             float angle = Quaternion.Angle(partToRotate.rotation, targetRotation);
 
-            if (angle <= fireAngle && fireCooldown <= 0f)
+            if (angle <= weaponData.fireAngle && fireCooldown + weaponData.fireStartCooldown <= 0f)
             {
-                if (laserweapon)
+                if (weaponData.laserweapon)
                 {
                     ShootLaser();
                 }
@@ -109,9 +80,9 @@ public class Weapon : MonoBehaviour
                     ShootAmmo();
                 }
 
-                if (fireRate > 0f)
+                if (weaponData.fireRate > 0f)
                 {
-                    fireCooldown = 1f / fireRate;
+                    fireCooldown = (1f / weaponData.fireRate) + weaponData.fireStartCooldown;
                 }
             }
         }
@@ -125,8 +96,8 @@ public class Weapon : MonoBehaviour
 
         if (targetEnemy != null)
         {
-            targetEnemy.TakeDamage(transform.root.gameObject, damageOverTime * Time.deltaTime);
-            targetEnemy.Slow(transform.root.gameObject, slowAmount);
+            targetEnemy.TakeDamage(transform.root.gameObject, weaponData.damageOverTime * Time.deltaTime);
+            targetEnemy.Slow(transform.root.gameObject, weaponData.slowAmount);
         }
 
         if (!lineRenderer.enabled)
@@ -148,14 +119,14 @@ public class Weapon : MonoBehaviour
 
     protected void Reload()
     {
-        if (laserweapon && target == null && lineRenderer.enabled)
+        if (weaponData.laserweapon && target == null && lineRenderer.enabled)
         {
             lineRenderer.enabled = false;
             impactEffect.Stop();
             impactLight.enabled = false;
         }
 
-        if (fireRate > 0f)
+        if (weaponData.fireRate > 0f)
         {
             fireCooldown -= Time.deltaTime;
         }
@@ -163,7 +134,7 @@ public class Weapon : MonoBehaviour
 
     protected void ShootAmmo()
     {
-        GameObject ammoGO = Instantiate(ammoPrefab, firePoint.position, firePoint.rotation);
+        GameObject ammoGO = Instantiate(weaponData.ammoPrefab, firePoint.position, firePoint.rotation);
         Ammunition ammo = ammoGO.GetComponent<Ammunition>();
 
         if (ammo != null)
@@ -185,39 +156,39 @@ public class Weapon : MonoBehaviour
         {
             Vector3 dir = target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.RotateTowards(partToRotate.rotation, lookRotation, Time.deltaTime * turnRate).eulerAngles;
-            partToRotate.rotation = Quaternion.Euler(xLocked ? 0f : rotation.x, yLocked ? 0f : rotation.y, zLocked ? 0f : rotation.z);
+            Vector3 rotation = Quaternion.RotateTowards(partToRotate.rotation, lookRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
+            partToRotate.rotation = Quaternion.Euler(weaponData.xLocked ? 0f : rotation.x, weaponData.yLocked ? 0f : rotation.y, weaponData.zLocked ? 0f : rotation.z);
 
             Vector3 localRotation = partToRotate.localRotation.eulerAngles;
 
             if (localRotation.y < 180)
             {
-                localRotation.y = Mathf.Clamp(localRotation.y, 0, turnAngle);
+                localRotation.y = Mathf.Clamp(localRotation.y, 0, weaponData.turnAngle);
             }
             else
             {
-                localRotation.y = Mathf.Clamp(localRotation.y, 360 - turnAngle, 360);
+                localRotation.y = Mathf.Clamp(localRotation.y, 360 - weaponData.turnAngle, 360);
             }
 
-            partToRotate.localRotation = Quaternion.Euler(xLocked ? 0f : localRotation.x, yLocked ? 0f : localRotation.y, zLocked ? 0f : localRotation.z);
+            partToRotate.localRotation = Quaternion.Euler(weaponData.xLocked ? 0f : localRotation.x, weaponData.yLocked ? 0f : localRotation.y, weaponData.zLocked ? 0f : localRotation.z);
 
         }
         else
         {
-            Vector3 rotation = Quaternion.RotateTowards(partToRotate.localRotation, localStartRotation, Time.deltaTime * turnRate).eulerAngles;
-            partToRotate.localRotation = Quaternion.Euler(xLocked ? 0f : rotation.x, yLocked ? 0f : rotation.y, zLocked ? 0f : rotation.z);
+            Vector3 rotation = Quaternion.RotateTowards(partToRotate.localRotation, localStartRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
+            partToRotate.localRotation = Quaternion.Euler(weaponData.xLocked ? 0f : rotation.x, weaponData.yLocked ? 0f : rotation.y, weaponData.zLocked ? 0f : rotation.z);
 
         }
     }
 
     void UpdateTarget()
     {
-        if (target == null || !focusTarget)
+        if (target == null || !weaponData.focusTarget)
         {
             GameObject[] enemies = TargetFinder.FindEnemies(enemyTags);
             GameObject targetEnemy = null;
 
-            targetEnemy = TargetFinder.PickTarget(enemies, transform, searchStrategy, range, turnAngle);
+            targetEnemy = TargetFinder.PickTarget(enemies, transform, weaponData.searchStrategy, weaponData.range, weaponData.turnAngle);
 
             if (targetEnemy != null)
             {
@@ -234,7 +205,7 @@ public class Weapon : MonoBehaviour
         {
             float angle = Vector3.Angle(target.transform.position - transform.position, transform.forward);
             float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
-            if (distanceToEnemy > range || angle > turnAngle)
+            if (distanceToEnemy > weaponData.range || angle > weaponData.turnAngle)
             {
                 target = null;
             }
@@ -249,7 +220,7 @@ public class Weapon : MonoBehaviour
         Vector3 dir = target.position - partToRotate.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Quaternion localLookRotation = Quaternion.Inverse(partToRotate.rotation) * lookRotation;
-        Vector3 localRotation = Quaternion.Lerp(partToRotate.localRotation, localLookRotation, Time.deltaTime * turnRate).eulerAngles;
+        Vector3 localRotation = Quaternion.Lerp(partToRotate.localRotation, localLookRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(partToRotate.position, partToRotate.position + dir);
@@ -262,7 +233,7 @@ public class Weapon : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, weaponData.range);
     }
 
 }

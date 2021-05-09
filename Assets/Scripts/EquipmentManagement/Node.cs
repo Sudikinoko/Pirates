@@ -20,12 +20,13 @@ public class Node : MonoBehaviour
     [HideInInspector]
     public GameObject equipment;
     [HideInInspector]
-    public EquipmentBlueprint blueprint;
+    public EquipmentData blueprint;
 
     private Renderer rend;
     private Color startColor;
 
     EquipmentManager equipmentManager;
+    InventoryManager inventoryManager;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Node : MonoBehaviour
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
 
+        inventoryManager = InventoryManager.instance;
         equipmentManager = EquipmentManager.instance;
     }
 
@@ -69,7 +71,7 @@ public class Node : MonoBehaviour
 
     }
 
-    public void SetBlueprint(EquipmentBlueprint blueprint)
+    public void SetBlueprint(EquipmentData blueprint)
     {
         this.blueprint = blueprint;
     }
@@ -78,18 +80,20 @@ public class Node : MonoBehaviour
     {
         if (blueprint != null)
         {
+            if (equipment != null)
+            {
+                RemoveEquipment();
+            }
+
+            inventoryManager.RemoveEquipment(blueprint);
+
             equipment = Instantiate(blueprint.prefab, GetBuildPosition(), transform.rotation);
             equipment.transform.SetParent(this.transform);
         }
     }
 
-    public void Equip(EquipmentBlueprint blueprint)
+    public void Equip(EquipmentData blueprint)
     {
-        if (equipment != null)
-        {
-            RemoveEquipment();
-        }
-
         this.blueprint = blueprint;
         Equip();
     }
@@ -97,7 +101,7 @@ public class Node : MonoBehaviour
     public void RemoveEquipment()
     {
         //TODO Add to Inventory
-
+        inventoryManager.AddEquipment(blueprint);
         blueprint = null;
         Destroy(equipment);
     }

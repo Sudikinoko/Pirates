@@ -74,4 +74,30 @@ public class TargetFinder : MonoBehaviour
         }
         return enemies.ToArray();
     }
+
+    public static List<Transform> FindVisibleEnemiesInRadius(Transform position, float angle, bool globalAngle, LayerMask targetMask)
+    {
+        Collider[] targetsInRadius = Physics.OverlapSphere(position.position, angle, targetMask);
+        List<Transform> visibleTargets = new List<Transform>();
+        foreach (Collider collider in targetsInRadius)
+        {
+            Transform target = collider.transform;
+            Vector3 directionToTarget = (target.position - position.position).normalized;
+            if (Vector3.Angle(position.forward, directionToTarget) <= angle)
+            {
+                visibleTargets.Add(target);
+            }
+        }
+        return visibleTargets;
+    }
+
+    public Vector3 DirectionFromAngle(Transform position, float angleInDegrees, bool globalAngle)
+    {
+        if (!globalAngle)
+        {
+            angleInDegrees += position.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+
 }

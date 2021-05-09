@@ -16,8 +16,8 @@ public class EquipmentManager : MonoBehaviour
     public GameObject equipEffect;
     public GameObject removeEffect;
 
-    public EquipmentBlueprint standardBlueprintToBuild;
-    EquipmentBlueprint blueprintToBuild;
+    public EquipmentData standardBlueprintToBuild;
+    EquipmentData blueprintToBuild;
     private Node selectedNode;
 
     public NodeUI nodeUI;
@@ -43,13 +43,13 @@ public class EquipmentManager : MonoBehaviour
         nodeUI.Hide();
     }
 
-    public void SetBlueprintToBuild(EquipmentBlueprint blueprint)
+    public void SetBlueprintToBuild(EquipmentData blueprint)
     {
         blueprintToBuild = blueprint;
         selectedNode.SetBlueprint(blueprintToBuild);
     }
 
-    public EquipmentBlueprint GetBlueprintToBuild()
+    public EquipmentData GetBlueprintToBuild()
     {
         return blueprintToBuild;
     }
