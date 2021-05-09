@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2455853711656172248}
   - component: {fileID: 2455853711656172247}
   - component: {fileID: 2455853711656172253}
-  - component: {fileID: 2455853711656172252}
   - component: {fileID: 2455853711656172251}
   m_Layer: 0
   m_Name: 3WeaponTestShip
@@ -130,6 +129,7 @@ MonoBehaviour:
   - Enemy
   deathEffect: {fileID: 0}
   waterEffect: {fileID: 0}
+  bountyEffect: {fileID: 0}
   statusBarPrefab: {fileID: 0}
   healthBarDisplayPoint: {fileID: 0}
   constructionMode: 0
@@ -160,22 +160,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  zoomOutPosition: {fileID: 0}
-  zoomInPosition: {fileID: 0}
-  constructionModePosition: {fileID: 0}
---- !u!114 &2455853711656172252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2455853711656172246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80e8295e3a748b419ebd92d09683e87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
+  zoomOutPosition: {fileID: 2478461133228091886}
+  zoomInPosition: {fileID: 6062990603913855622}
+  constructionModePosition: {fileID: 4026717793731570582}
 --- !u!114 &2455853711656172251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +405,24 @@ PrefabInstance:
 --- !u!4 &7713677760298273996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2467958203973005250, guid: a97c60160d047a84aab675ce6d717aea,
+    type: 3}
+  m_PrefabInstance: {fileID: 5274717802194445070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4026717793731570582 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9138447525033265304, guid: a97c60160d047a84aab675ce6d717aea,
+    type: 3}
+  m_PrefabInstance: {fileID: 5274717802194445070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6062990603913855622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2096318081581949320, guid: a97c60160d047a84aab675ce6d717aea,
+    type: 3}
+  m_PrefabInstance: {fileID: 5274717802194445070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2478461133228091886 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7734594397917317856, guid: a97c60160d047a84aab675ce6d717aea,
     type: 3}
   m_PrefabInstance: {fileID: 5274717802194445070}
   m_PrefabAsset: {fileID: 0}

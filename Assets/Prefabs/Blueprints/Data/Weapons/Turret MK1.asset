@@ -10,40 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 802ac1b7e90d8ac48a5c4ca1962e8039, type: 3}
-  m_Name: Turret
+  m_Name: Turret MK1
   m_EditorClassIdentifier: 
-  name: Turret
+  name: Turret MK1
   amount: 0
-  description: 
-  inventoryImage: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
+  description: Kills
+  inventoryImage: {fileID: 21300000, guid: d4f5634edede200468fc1ccf30e6f3a1, type: 3}
   Border: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   rarity: 0
   type: 0
-  cost: 5
+  cost: 10
   unlocked: 0
   minNodeSize: 0
   prefab: {fileID: 9069566170013735613, guid: 467844df566482b479e2cba6e0cb59f5, type: 3}
   buildEffect: {fileID: 0}
   attackType: 0
-  range: 200
-  dmg: 1
+  range: 300
+  dmg: 10
   focusTarget: 1
-  turnAngle: 90
-  turnRate: 20
+  turnAngle: 180
+  turnRate: 300
   accuracy: 1
   fireAngle: 10
   mass: 1
-  isAutofire: 0
+  isAutofire: 1
   searchStrategy: 0
   xLocked: 0
   yLocked: 0
   zLocked: 0
   ammoPrefab: {fileID: 3730163994860281038, guid: 092d8e6b5e33d7246b3d3cdb4c2776b1,
     type: 3}
-  fireRate: 1
+  fireRate: 4
   fireStartCooldown: 0
-  bulletSpeed: 100
+  bulletSpeed: 300
   laserweapon: 0
   damageOverTime: 0
   slowAmount: 0

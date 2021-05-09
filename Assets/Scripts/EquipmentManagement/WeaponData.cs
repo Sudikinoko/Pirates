@@ -39,6 +39,7 @@ public class WeaponData : EquipmentData
     public GameObject ammoPrefab;
     public float fireRate = 1f;
     public float fireStartCooldown = 0f;
+    public float bulletSpeed = 100f;
 
 
     [Header("Use Laser")]

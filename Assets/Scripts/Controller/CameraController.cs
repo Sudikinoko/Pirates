@@ -17,7 +17,6 @@ public class CameraController : MonoBehaviour
 
     CameraState cameraState = CameraState.ZoomedOut;
 
-    public Transform shopTransform;
 
     public Transform playerTransform;
 
@@ -26,6 +25,7 @@ public class CameraController : MonoBehaviour
     Transform zoomedOutTransform;
     Transform zoomedInTransform;
     Transform constructionModeTransform;
+    public Transform shopTransform;
 
     public float transitionSpeed;
     public float transitionRotationSpeed = 100f;
@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float smoothFactorZoomedOut = 0.5f;
     [Range(0.01f, 1.0f)]
-    public float smoothFactorZoomedIn = 0.5f;
+    public float smoothFactorZoomedIn = 0.01f;
     [Range(0.01f, 1.0f)]
     public float smoothFactorConstruction = 0.5f;
     [Range(0.01f, 1.0f)]
@@ -139,7 +139,7 @@ public class CameraController : MonoBehaviour
 
     private void ShopUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, shopTransform.position + shopTransform.forward * 50f, smoothFactorShop);
+        transform.position = Vector3.Lerp(transform.position, shopTransform.position + shopTransform.forward * 100f, smoothFactorShop);
 
         Vector3 dir = shopTransform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -164,7 +164,7 @@ public class CameraController : MonoBehaviour
                 break;
             case CameraState.ConstructMode:
                 Camera.main.orthographic = true;
-                Camera.main.orthographicSize = 10f;
+                Camera.main.orthographicSize = 20f;
                 cameraUpdate = ConstructModeUpdate;
                 break;
             case CameraState.Shop:

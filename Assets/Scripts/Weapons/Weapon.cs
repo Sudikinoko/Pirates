@@ -139,7 +139,7 @@ public class Weapon : MonoBehaviour
 
         if (ammo != null)
         {
-            ammo.Initiate(this.transform.root.gameObject, target);
+            ammo.Initiate(this.transform.root.gameObject, target, weaponData);
 
             if (shootEffect != null)
             {

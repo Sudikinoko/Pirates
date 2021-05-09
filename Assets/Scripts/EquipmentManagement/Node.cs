@@ -20,7 +20,7 @@ public class Node : MonoBehaviour
     [HideInInspector]
     public GameObject equipment;
     [HideInInspector]
-    public EquipmentData blueprint;
+    public EquipmentData equipmentData;
 
     private Renderer rend;
     private Color startColor;
@@ -73,36 +73,40 @@ public class Node : MonoBehaviour
 
     public void SetBlueprint(EquipmentData blueprint)
     {
-        this.blueprint = blueprint;
+        this.equipmentData = blueprint;
     }
 
     public void Equip()
     {
-        if (blueprint != null)
+        if (equipmentData != null)
         {
             if (equipment != null)
             {
                 RemoveEquipment();
             }
 
-            inventoryManager.RemoveEquipment(blueprint);
+            inventoryManager.RemoveEquipment(equipmentData);
 
-            equipment = Instantiate(blueprint.prefab, GetBuildPosition(), transform.rotation);
+            equipment = Instantiate(equipmentData.prefab, GetBuildPosition(), transform.rotation);
             equipment.transform.SetParent(this.transform);
+            if (equipment.GetComponent<Weapon>() != null)
+            {
+                equipment.GetComponent<Weapon>().weaponData = (WeaponData)equipmentData;
+            }
         }
     }
 
     public void Equip(EquipmentData blueprint)
     {
-        this.blueprint = blueprint;
+        this.equipmentData = blueprint;
         Equip();
     }
 
     public void RemoveEquipment()
     {
         //TODO Add to Inventory
-        inventoryManager.AddEquipment(blueprint);
-        blueprint = null;
+        inventoryManager.AddEquipment(equipmentData);
+        equipmentData = null;
         Destroy(equipment);
     }
 

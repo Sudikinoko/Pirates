@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour, ICollector
 
     public bool RemoveMoney(float amount)
     {
-        if (money > amount)
+        if (money >= amount)
         {
             money -= amount;
             gameUI.UpdateCoins();

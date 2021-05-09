@@ -145,7 +145,7 @@ MonoBehaviour:
   utilityNodes: []
   weaponAmount: 0
   utilityAmount: 0
-  startHealth: 10
+  startHealth: 5
   startArmor: 0
   startRegeneration: 0
   startSpeed: 30
@@ -154,7 +154,7 @@ MonoBehaviour:
   startMass: 1
   startDrag: 0.3
   startAngularDrag: 0.5
-  value: 1
+  value: 2
   enemyTags:
   - Enemy
   deathEffect: {fileID: 0}

@@ -5,6 +5,8 @@ public class Ammunition : MonoBehaviour
 
     GameObject shooter;
 
+    WeaponData weaponData;
+
     Transform target;
     Vector3 targetPosition;
 
@@ -100,10 +102,13 @@ public class Ammunition : MonoBehaviour
         }
     }
 
-    public void Initiate(GameObject shooter, Transform target)
+    public void Initiate(GameObject shooter, Transform target, WeaponData weaponData)
     {
         this.shooter = shooter;
         this.target = target;
+        this.weaponData = weaponData;
+        damage = weaponData.dmg;
+        speed = weaponData.bulletSpeed;
 
         markTargetPosition();
     }

@@ -5,19 +5,18 @@ public class Base : MonoBehaviour
 {
 
     GameUI gameUI;
+    ShopUI shopUI;
 
     public bool isShop = true;
     public bool isShipyard = true;
 
     public Shop shop;
 
-    //Moved to Shop Script
-    //public List<EquipmentBlueprint> blueprintsToSell;
-
     // Start is called before the first frame update
     void Start()
     {
         gameUI = GameUI.instance;
+        shopUI = ShopUI.instance;
     }
 
     void OnTriggerEnter(Collider col)
@@ -29,7 +28,9 @@ public class Base : MonoBehaviour
             {
                 gameUI.EnableShop();
                 Camera.main.GetComponent<CameraController>().shopTransform = shop.transform;
-                ShopUI.instance.SetTarget(shop.transform);
+                shopUI.SetTarget(shop);
+                shopUI.ui.SetActive(true);
+                shop.PopulateShopUI();
             }
             if (isShipyard)
             {
@@ -44,6 +45,7 @@ public class Base : MonoBehaviour
         PlayerController playerController = col.transform.root.GetComponent<PlayerController>();
         if (playerController != null)
         {
+            shopUI.ui.SetActive(false);
             gameUI.DisableShop();
             gameUI.DisableConstruction();
         }

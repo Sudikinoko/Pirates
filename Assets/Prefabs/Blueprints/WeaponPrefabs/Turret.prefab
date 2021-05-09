@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f58f657f787494da38d0d7514831e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: c7fb67fc25e712d40b8624c13a015062, type: 2}
+  weaponData: {fileID: 0}
   weaponNode: {fileID: 0}
   shootEffect: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
     type: 3}

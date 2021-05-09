@@ -6,11 +6,13 @@ public class ShopUI : MonoBehaviour
 {
     public static ShopUI instance;
 
+    public GameObject ui;
+
     public Transform shopContainerWeapons;
     public Transform shopContainerUtility;
     public Transform shopContainerShips;
 
-    public Transform target;
+    public Shop target;
 
     void Awake()
     {
@@ -39,7 +41,7 @@ public class ShopUI : MonoBehaviour
             {
                 case EquipmentType.Weapon:
                     GameObject weaponItem = Instantiate(shopItemprefab, shopContainerWeapons);
-                    shopContainerWeapons.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
+                    weaponItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
 
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
@@ -51,7 +53,7 @@ public class ShopUI : MonoBehaviour
                     break;
                 case EquipmentType.Utility:
                     GameObject sutilityItem = Instantiate(shopItemprefab, shopContainerUtility);
-                    shopContainerUtility.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
+                    sutilityItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
 
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
@@ -63,7 +65,7 @@ public class ShopUI : MonoBehaviour
                     break;
                 case EquipmentType.Ship:
                     GameObject shipItem = Instantiate(shopItemprefab, shopContainerShips);
-                    shopContainerShips.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
+                    shipItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
 
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
@@ -81,32 +83,37 @@ public class ShopUI : MonoBehaviour
         }
     }
 
-    private void OnButtonClick(EquipmentData equipment)
+    public void OnButtonClick(EquipmentData equipment)
     {
-        Debug.Log(equipment.name);
+        Debug.Log("Equipment selected: " + equipment.name);
 
-        //TODO Set Item as Selected
+        target.SelectItemToBuy(equipment);
+    }
+
+    public void Buy()
+    {
+        target.BuySelectedItem();
     }
 
     public void ClearShop()
     {
         foreach (Transform child in shopContainerWeapons)
         {
-            Destroy(child);
+            Destroy(child.gameObject);
         }
 
         foreach (Transform child in shopContainerUtility)
         {
-            Destroy(child);
+            Destroy(child.gameObject);
         }
 
         foreach (Transform child in shopContainerWeapons)
         {
-            Destroy(child);
+            Destroy(child.gameObject);
         }
     }
 
-    public void SetTarget(Transform target)
+    public void SetTarget(Shop target)
     {
         this.target = target;
     }
@@ -115,7 +122,7 @@ public class ShopUI : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = target.position;
+            transform.position = target.transform.position;
             transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
         }
     }

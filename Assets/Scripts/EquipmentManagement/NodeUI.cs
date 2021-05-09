@@ -91,7 +91,6 @@ public class NodeUI : MonoBehaviour
         Debug.Log(equipment.name);
 
         SelectEquipmentToBuild(equipment);
-        //TODO Set Item as Selected
     }
 
     public void ClearShop()
