@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-//[RequireComponent(typeof(Rigidbody))]
 public class Ship : MonoBehaviour, IHittable
 {
     public WeaponNode[] weaponNodes;
@@ -91,6 +90,7 @@ public class Ship : MonoBehaviour, IHittable
             InstantiateWaterSplashEffect();
         }
 
+        Regenerate();
         RenderHealthBar();
     }
 
@@ -176,6 +176,11 @@ public class Ship : MonoBehaviour, IHittable
         {
             statusBar.transform.LookAt(statusBar.transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
         }
+    }
+
+    void Regenerate()
+    {
+        Heal(regeneration * Time.deltaTime);
     }
 
     void UpdateHealthBar()

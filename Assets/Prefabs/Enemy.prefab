@@ -147,7 +147,7 @@ MonoBehaviour:
   utilityAmount: 0
   startHealth: 5
   startArmor: 0
-  startRegeneration: 0
+  startRegeneration: 0.1
   startSpeed: 30
   startAcceleration: 10
   startTurningRate: 1

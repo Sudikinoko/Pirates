@@ -9,11 +9,12 @@ TagManager:
   - CameraZoomInPoint
   - CameraZoomOutPoint
   - Base
+  - NoSpawnZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NoSpawnZone
   - Water
   - UI
   - 
