@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89721f6eac8a3b4897ade5890f8f4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  homeBase: {fileID: 0}
 --- !u!114 &4503812375347394985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +216,7 @@ MonoBehaviour:
   utilityAmount: 0
   startHealth: 10
   startArmor: 0
-  startRegeneration: 0
+  startRegeneration: 0.1
   startSpeed: 30
   startAcceleration: 700
   startTurningRate: 0.5

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9013d116295f747a1cb23ef64a994a, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e618ab293d0c541a33e122ee5a2eff, type: 3}
   m_Name: Ruderboot
   m_EditorClassIdentifier: 
   name: Ruderboot
@@ -25,3 +25,6 @@ MonoBehaviour:
   minNodeSize: 0
   prefab: {fileID: 8262772014376893782, guid: 54c283c37dc1d704c9e2994e8ad8b3a8, type: 3}
   buildEffect: {fileID: 0}
+  type: 2
+  cameraConstructionSize: 10
+  zoomedOutSize: 100

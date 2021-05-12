@@ -4,6 +4,8 @@ using UnityEngine;
 public class Base : MonoBehaviour
 {
 
+    public Transform respawn;
+
     GameUI gameUI;
     ShopUI shopUI;
 
@@ -36,6 +38,8 @@ public class Base : MonoBehaviour
             {
                 gameUI.EnableConstruction();
             }
+
+            playerController.SetHomeBase(this);
         }
 
     }

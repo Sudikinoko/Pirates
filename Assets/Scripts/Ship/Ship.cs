@@ -70,6 +70,8 @@ public class Ship : MonoBehaviour, IHittable
 
     private Vector3 lastPosition;
 
+    bool playerControlled = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +81,8 @@ public class Ship : MonoBehaviour, IHittable
         InitiateMeshCollider();
         InstantiateWaterSplashEffect();
         InitiateCameraPoints();
+        CheckIfPlayerControlled();
+        UpdateHealthBar();
 
         lastPosition = transform.position;
     }
@@ -94,6 +98,11 @@ public class Ship : MonoBehaviour, IHittable
 
         Regenerate();
         RenderHealthBar();
+    }
+
+    public void CheckIfPlayerControlled()
+    {
+        playerControlled = gameObject.GetComponent<PlayerController>() == null ? false : true;
     }
 
     void InitiateStartValues()
@@ -206,6 +215,12 @@ public class Ship : MonoBehaviour, IHittable
     void UpdateHealthBar()
     {
 
+        if (playerControlled)
+        {
+            GameUI.instance.UpdadeHealthBar(health, startHealth);
+            return;
+        }
+
         if (statusBar != null && healthBarImage != null)
         {
             healthBarImage.fillAmount = health / startHealth;
@@ -292,6 +307,12 @@ public class Ship : MonoBehaviour, IHittable
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         }
 
+        if (playerControlled)
+        {
+            Respawn();
+            return;
+        }
+
         Destroy(gameObject);
 
     }
@@ -312,5 +333,10 @@ public class Ship : MonoBehaviour, IHittable
         Gizmos.DrawLine(transform.position, transform.position + dir);
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, transform.forward * 50);
+    }
+
+    public void Respawn()
+    {
+        gameObject.GetComponent<PlayerController>().Die();
     }
 }

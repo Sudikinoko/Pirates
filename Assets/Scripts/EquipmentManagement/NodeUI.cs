@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -78,7 +79,7 @@ public class NodeUI : MonoBehaviour
             inventoryItem.GetComponentInChildren<Image>().sprite = equipmentData.inventoryImage;
             inventoryItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipmentData));
 
-            //inventoryItem.transform.GetChild(1).gameObject.GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
+            inventoryItem.transform.GetChild(1).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = equipmentData.name;
 
             //inventoryItem.transform.GetChild(0).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
             //inventoryItem.transform.GetChild(1).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;

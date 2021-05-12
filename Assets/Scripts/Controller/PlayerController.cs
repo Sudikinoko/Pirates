@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public Base homeBase;
+
+    ShipData shipData;
+
     Ship ship;
 
     Rigidbody rigidBody;
@@ -61,4 +65,23 @@ public class PlayerController : MonoBehaviour
         ship.constructionMode = false;
     }
 
+    public void Die()
+    {
+        transform.position = homeBase.respawn.position;
+        transform.rotation = homeBase.respawn.rotation;
+        PlayerStats.instance.RemoveMoney(PlayerStats.instance.GetCurrentMoneyAmount() / 2);
+        ship.Heal(ship.startHealth);
+
+    }
+
+
+    public void SetHomeBase(Base newHomeBase)
+    {
+        homeBase = newHomeBase;
+    }
+
+    public void SetCurrentShip(ShipData shipData)
+    {
+        this.shipData = shipData;
+    }
 }

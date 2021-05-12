@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class GameUI : MonoBehaviour
 
     private CameraState state;
     private CameraState stateBefore;
+
+    public Image healthBar;
+    public TextMeshProUGUI playerHealthText;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,6 +52,12 @@ public class GameUI : MonoBehaviour
     PlayerController FindPlayerController()
     {
         return GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
+
+    public void UpdadeHealthBar(float health, float maxHealth)
+    {
+        healthBar.fillAmount = health / maxHealth;
+        playerHealthText.text = health.ToString("F0") + "/" + maxHealth.ToString("F0");
     }
 
     public void UpdateCoins()

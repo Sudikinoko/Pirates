@@ -32,6 +32,7 @@ public class EquipmentData : ScriptableObject
     public Color backgroundColor;
 
     public Rarity rarity;
+    [HideInInspector]
     public EquipmentType type;
 
     [Header("Ingame")]
