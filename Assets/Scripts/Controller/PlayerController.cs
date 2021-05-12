@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public static PlayerController instance;
-
     Ship ship;
 
     Rigidbody rigidBody;
@@ -14,20 +12,9 @@ public class PlayerController : MonoBehaviour
     static Plane XZPlane = new Plane(Vector3.up, Vector3.zero);
 
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
-
     void Start()
     {
+        gameObject.tag = "Player";
         ship = GetComponent<Ship>();
         rigidBody = transform.GetComponent<Rigidbody>();
     }
@@ -63,12 +50,14 @@ public class PlayerController : MonoBehaviour
     public void EnableConstructionMode()
     {
         Destroy(GetComponent<Rigidbody>());
+        GetComponent<MeshCollider>().enabled = false;
         ship.constructionMode = true;
     }
 
     public void DisableConstructionMode()
     {
         ship.InitiateRigidbody();
+        ship.InitiateMeshCollider();
         ship.constructionMode = false;
     }
 

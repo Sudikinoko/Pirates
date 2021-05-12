@@ -46,19 +46,19 @@ public class ShopUI : MonoBehaviour
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
 
-                    //shopItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
+                    weaponItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
                     //shopItem.transform.GetChild(1).GetComponent<Image>().sprite = equipment.Border;
                     //shopItem.transform.GetChild(2).GetComponent<Text>().text = equipment.name;
                     //shopItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = equipment.name;
                     break;
                 case EquipmentType.Utility:
-                    GameObject sutilityItem = Instantiate(shopItemprefab, shopContainerUtility);
-                    sutilityItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
+                    GameObject utilityItem = Instantiate(shopItemprefab, shopContainerUtility);
+                    utilityItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
 
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
 
-                    //shopItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
+                    utilityItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
                     //shopItem.transform.GetChild(1).GetComponent<Image>().sprite = equipment.Border;
                     //shopItem.transform.GetChild(2).GetComponent<Text>().text = equipment.name;
                     //shopItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = equipment.name;
@@ -70,7 +70,7 @@ public class ShopUI : MonoBehaviour
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
 
-                    //shopItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
+                    shipItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
                     //shopItem.transform.GetChild(1).GetComponent<Image>().sprite = equipment.Border;
                     //shopItem.transform.GetChild(2).GetComponent<Text>().text = equipment.name;
                     //shopItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = equipment.name;

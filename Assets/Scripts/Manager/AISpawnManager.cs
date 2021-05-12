@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AISpawnManager : MonoBehaviour
 {
+    Transform playerController;
 
     public static AISpawnManager instance;
 
@@ -18,7 +19,6 @@ public class AISpawnManager : MonoBehaviour
     public List<GameObject> militarySpawn;
     public List<GameObject> cargoSpawn;
 
-    PlayerController playerController;
 
     void Awake()
     {
@@ -35,13 +35,21 @@ public class AISpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = PlayerController.instance;
+        FindPlayerController();
         InvokeRepeating("ManageSpawns", 0f, spawnInterval);
+    }
+
+    private void Update()
+    {
+        if (playerController == null)
+        {
+            FindPlayerController();
+        }
     }
 
     void ManageSpawns()
     {
-        float distanceToHomeBase = (playerController.transform.position - homebase.position).magnitude;
+        float distanceToHomeBase = (playerController.position - homebase.position).magnitude;
 
         int level = (int)(distanceToHomeBase / distancePerLevel) + 1;
 
@@ -58,7 +66,7 @@ public class AISpawnManager : MonoBehaviour
             Vector3 spawnPosition;
             do
             {
-                spawnPosition = playerController.transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(minSpawnRange, maxSpawnRange);
+                spawnPosition = playerController.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(minSpawnRange, maxSpawnRange);
             }
             while (Physics.Raycast(spawnPosition + Vector3.up * 1000f, Vector3.down, 1000f, 3));
 
@@ -67,11 +75,16 @@ public class AISpawnManager : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            float distance = (enemy.transform.position - playerController.transform.position).magnitude;
+            float distance = (enemy.transform.position - playerController.position).magnitude;
             if (distance > maxSpawnRange)
             {
                 Destroy(enemy);
             }
         }
+    }
+
+    void FindPlayerController()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

@@ -59,6 +59,7 @@ public class Ship : MonoBehaviour, IHittable
     public bool yLocked = false;
     public bool zLocked = false;
     Rigidbody rigidBody;
+    MeshCollider meshCollider;
     Vector3 targetPoint;
     public AnimationCurve turnHabit;
 
@@ -75,6 +76,7 @@ public class Ship : MonoBehaviour, IHittable
         InitiateStartValues();
         InstantiateHealthBar();
         InitiateRigidbody();
+        InitiateMeshCollider();
         InstantiateWaterSplashEffect();
         InitiateCameraPoints();
 
@@ -157,6 +159,24 @@ public class Ship : MonoBehaviour, IHittable
         }
     }
 
+    public void InitiateMeshCollider()
+    {
+        if (meshCollider == null)
+        {
+            if (GetComponent<MeshCollider>() == null)
+            {
+                meshCollider = gameObject.AddComponent<MeshCollider>();
+
+                meshCollider.convex = true;
+                meshCollider.enabled = true;
+            }
+
+        }
+        else
+        {
+            meshCollider.enabled = true;
+        }
+    }
 
 
     void InstantiateHealthBar()

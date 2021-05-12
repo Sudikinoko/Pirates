@@ -75,13 +75,14 @@ public class NodeUI : MonoBehaviour
 
             inventoryItem.name = equipmentData.name;
 
-            inventoryItem.GetComponent<Image>().color = equipmentData.backgroundColor;
+            inventoryItem.GetComponentInChildren<Image>().sprite = equipmentData.inventoryImage;
             inventoryItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipmentData));
 
-            inventoryItem.transform.GetComponent<Image>().sprite = equipmentData.inventoryImage;
-            //inventoryItem.transform.GetChild(1).GetComponent<Image>().sprite = equipmentData.Border;
-            inventoryItem.transform.GetChild(0).GetComponent<Text>().text = equipmentData.name;
-            //inventoryItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = equipmentData.name;
+            //inventoryItem.transform.GetChild(1).gameObject.GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
+
+            //inventoryItem.transform.GetChild(0).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
+            //inventoryItem.transform.GetChild(1).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
+            //inventoryItem.transform.GetChild(2).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
 
         }
     }

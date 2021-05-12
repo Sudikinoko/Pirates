@@ -28,6 +28,12 @@ public class Shop : MonoBehaviour
         {
             if (PlayerStats.instance.RemoveMoney(selectedEquipmentData.cost))
             {
+                if (selectedEquipmentData.type == EquipmentType.Ship)
+                {
+                    BuyShip();
+                    return true;
+                }
+
                 InventoryManager.instance.AddEquipment(selectedEquipmentData);
                 return true;
             }
@@ -35,5 +41,26 @@ public class Shop : MonoBehaviour
         return false;
     }
 
+    public void BuyShip()
+    {
+        Transform playerTransform = FindPlayerController();
+
+        Node[] nodes = playerTransform.GetComponentsInChildren<Node>();
+
+        foreach (Node node in nodes)
+        {
+            node.RemoveEquipment();
+        }
+
+        Instantiate(selectedEquipmentData.prefab, playerTransform.position, playerTransform.rotation);
+        DestroyImmediate(playerTransform.gameObject);
+
+        CameraController.instance.InitiateShipParameter();
+    }
+
+    Transform FindPlayerController()
+    {
+        return GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
 }

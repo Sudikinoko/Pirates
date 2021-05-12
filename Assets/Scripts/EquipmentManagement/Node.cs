@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(MeshCollider))]
 public class Node : MonoBehaviour
 {
 
@@ -21,6 +22,7 @@ public class Node : MonoBehaviour
     public GameObject equipment;
     [HideInInspector]
     public EquipmentData equipmentData;
+    public EquipmentData oldEquipmentData;
 
     private Renderer rend;
     private Color startColor;
@@ -85,6 +87,7 @@ public class Node : MonoBehaviour
                 RemoveEquipment();
             }
 
+            oldEquipmentData = equipmentData;
             inventoryManager.RemoveEquipment(equipmentData);
 
             equipment = Instantiate(equipmentData.prefab, GetBuildPosition(), transform.rotation);
@@ -104,9 +107,8 @@ public class Node : MonoBehaviour
 
     public void RemoveEquipment()
     {
-        //TODO Add to Inventory
-        inventoryManager.AddEquipment(equipmentData);
-        equipmentData = null;
+        inventoryManager.AddEquipment(oldEquipmentData);
+        oldEquipmentData = null;
         Destroy(equipment);
     }
 

@@ -32,13 +32,22 @@ public class GameUI : MonoBehaviour
     private void Start()
     {
         playerStats = PlayerStats.instance;
-        playerController = PlayerController.instance;
+        playerController = FindPlayerController();
         UpdateCoins();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerController == null)
+        {
+            playerController = FindPlayerController();
+        }
+    }
+
+    PlayerController FindPlayerController()
+    {
+        return GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public void UpdateCoins()

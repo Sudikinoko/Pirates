@@ -11,6 +11,8 @@ public enum CameraState
 public class CameraController : MonoBehaviour
 {
 
+    public static CameraController instance;
+
     public delegate void CameraUpdateDelegate();
     public static CameraUpdateDelegate cameraUpdate;
 
@@ -47,13 +49,22 @@ public class CameraController : MonoBehaviour
     public float zoomOutMin = 1;
     public float zoomOutMax = 800;
 
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         InitiateShipParameter();
     }
 
-    void InitiateShipParameter()
+    public void InitiateShipParameter()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
