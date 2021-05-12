@@ -21,6 +21,8 @@ public class NodeUI : MonoBehaviour
     public Transform itemContainer;
     public GameObject nodeUIItemPrefab;
 
+    Image lastSelectedImage;
+
     private void Start()
     {
         inventoryManager = InventoryManager.instance;
@@ -77,21 +79,35 @@ public class NodeUI : MonoBehaviour
             inventoryItem.name = equipmentData.name;
 
             inventoryItem.GetComponentInChildren<Image>().sprite = equipmentData.inventoryImage;
-            inventoryItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipmentData));
+            inventoryItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipmentData, inventoryItem));
 
-            inventoryItem.transform.GetChild(1).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = equipmentData.name;
-
-            //inventoryItem.transform.GetChild(0).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
-            //inventoryItem.transform.GetChild(1).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
-            //inventoryItem.transform.GetChild(2).GetComponentInChildren<TextMeshPro>().text = equipmentData.name;
+            inventoryItem.transform.GetChild(1).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = WeaponInfo((WeaponData)equipmentData);
 
         }
     }
 
-    private void OnButtonClick(EquipmentData equipment)
+    private string WeaponInfo(WeaponData data)
+    {
+        string infoText = data.name
+            + "\nRange: " + data.range
+            + "\nDamage: " + data.dmg
+            + "\nFireRate: " + data.fireRate
+            + "\nTurnRadius: " + data.turnAngle
+            + "\nTurningSpeed: " + data.turnRate;
+        return infoText;
+    }
+
+
+    private void OnButtonClick(EquipmentData equipment, GameObject inventoryItem)
     {
         Debug.Log(equipment.name);
 
+        if (lastSelectedImage != null)
+        {
+            lastSelectedImage.color = Color.white;
+        }
+        inventoryItem.GetComponentInChildren<Image>().color = Color.green;
+        lastSelectedImage = inventoryItem.GetComponentInChildren<Image>();
         SelectEquipmentToBuild(equipment);
     }
 

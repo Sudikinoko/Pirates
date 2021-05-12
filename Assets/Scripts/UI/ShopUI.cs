@@ -14,6 +14,10 @@ public class ShopUI : MonoBehaviour
 
     public Shop target;
 
+    public Button buyButton;
+
+    Image lastSelectedImage;
+
     void Awake()
     {
         if (instance == null)
@@ -41,7 +45,7 @@ public class ShopUI : MonoBehaviour
             {
                 case EquipmentType.Weapon:
                     GameObject weaponItem = Instantiate(shopItemprefab, shopContainerWeapons);
-                    weaponItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
+                    weaponItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment, weaponItem));
 
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
@@ -53,7 +57,7 @@ public class ShopUI : MonoBehaviour
                     break;
                 case EquipmentType.Utility:
                     GameObject utilityItem = Instantiate(shopItemprefab, shopContainerUtility);
-                    utilityItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
+                    utilityItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment, utilityItem));
 
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
@@ -65,7 +69,7 @@ public class ShopUI : MonoBehaviour
                     break;
                 case EquipmentType.Ship:
                     GameObject shipItem = Instantiate(shopItemprefab, shopContainerShips);
-                    shipItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment));
+                    shipItem.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(equipment, shipItem));
 
 
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
@@ -83,9 +87,25 @@ public class ShopUI : MonoBehaviour
         }
     }
 
-    public void OnButtonClick(EquipmentData equipment)
+    public void OnButtonClick(EquipmentData equipment, GameObject inventoryItem)
     {
         Debug.Log("Equipment selected: " + equipment.name);
+
+        if (lastSelectedImage != null)
+        {
+            lastSelectedImage.color = Color.white;
+        }
+        inventoryItem.transform.GetChild(0).GetComponent<Image>().color = Color.green;
+        lastSelectedImage = inventoryItem.transform.GetChild(0).GetComponent<Image>();
+
+        if (PlayerStats.instance.GetCurrentMoneyAmount() >= equipment.cost)
+        {
+            buyButton.interactable = true;
+        }
+        else
+        {
+            buyButton.interactable = false;
+        }
 
         target.SelectItemToBuy(equipment);
     }

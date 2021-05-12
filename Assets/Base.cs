@@ -38,8 +38,8 @@ public class Base : MonoBehaviour
             {
                 gameUI.EnableConstruction();
             }
-
             playerController.SetHomeBase(this);
+            playerController.GetComponent<Ship>().Heal(float.PositiveInfinity);
         }
 
     }
