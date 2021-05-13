@@ -19,12 +19,12 @@ MonoBehaviour:
   Border: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   rarity: 0
-  type: 0
+  type: 2
   cost: 100
   unlocked: 0
   minNodeSize: 0
   prefab: {fileID: 3621361048046770345, guid: 208717bc2aa41454f95132373afdf598, type: 3}
   buildEffect: {fileID: 0}
-  type: 2
+  type: 0
   cameraConstructionSize: 10
   zoomedOutSize: 100

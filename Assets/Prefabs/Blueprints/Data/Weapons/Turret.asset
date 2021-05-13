@@ -29,21 +29,21 @@ MonoBehaviour:
   range: 200
   dmg: 1
   focusTarget: 1
-  turnAngle: 90
+  turnAngle: 25
   turnRate: 20
   accuracy: 1
   fireAngle: 10
   mass: 1
-  isAutofire: 0
+  isAutofire: 1
   searchStrategy: 0
   xLocked: 0
   yLocked: 0
   zLocked: 0
   ammoPrefab: {fileID: 3730163994860281038, guid: 092d8e6b5e33d7246b3d3cdb4c2776b1,
     type: 3}
-  fireRate: 1
+  fireRate: 0.5
   fireStartCooldown: 0
-  bulletSpeed: 100
+  bulletSpeed: 120
   laserweapon: 0
   damageOverTime: 0
   slowAmount: 0

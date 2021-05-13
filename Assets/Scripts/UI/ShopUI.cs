@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,6 +52,7 @@ public class ShopUI : MonoBehaviour
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
 
                     weaponItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
+                    weaponItem.transform.GetComponentInChildren<TextMeshProUGUI>().text = WeaponInfo((WeaponData)equipment);
                     //shopItem.transform.GetChild(1).GetComponent<Image>().sprite = equipment.Border;
                     //shopItem.transform.GetChild(2).GetComponent<Text>().text = equipment.name;
                     //shopItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = equipment.name;
@@ -63,6 +65,7 @@ public class ShopUI : MonoBehaviour
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
 
                     utilityItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
+                    utilityItem.transform.GetComponentInChildren<TextMeshProUGUI>().text = UtilityInfo((UtilityData)equipment);
                     //shopItem.transform.GetChild(1).GetComponent<Image>().sprite = equipment.Border;
                     //shopItem.transform.GetChild(2).GetComponent<Text>().text = equipment.name;
                     //shopItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = equipment.name;
@@ -75,6 +78,7 @@ public class ShopUI : MonoBehaviour
                     //shopItem.GetComponent<Image>().color = equipment.backgroundColor;
 
                     shipItem.transform.GetChild(0).GetComponent<Image>().sprite = equipment.inventoryImage;
+                    shipItem.transform.GetComponentInChildren<TextMeshProUGUI>().text = ShipInfo((ShipData)equipment);
                     //shopItem.transform.GetChild(1).GetComponent<Image>().sprite = equipment.Border;
                     //shopItem.transform.GetChild(2).GetComponent<Text>().text = equipment.name;
                     //shopItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = equipment.name;
@@ -89,7 +93,7 @@ public class ShopUI : MonoBehaviour
 
     public void OnButtonClick(EquipmentData equipment, GameObject inventoryItem)
     {
-        Debug.Log("Equipment selected: " + equipment.name);
+        Debug.Log("Shop Equipment selected: " + equipment.name);
 
         if (lastSelectedImage != null)
         {
@@ -108,6 +112,36 @@ public class ShopUI : MonoBehaviour
         }
 
         target.SelectItemToBuy(equipment);
+    }
+
+    private string WeaponInfo(WeaponData data)
+    {
+        string infoText = data.name
+            + "\nRange: " + data.range
+            + "\nDamage: " + data.dmg
+            + "\nFireRate: " + data.fireRate
+            + "\nTurnRadius: " + data.turnAngle
+            + "\nTurningSpeed: " + data.turnRate
+            + "\nCOST:" + data.cost;
+        return infoText;
+    }
+
+    private string UtilityInfo(UtilityData data)
+    {
+        string infoText = data.name
+            + "\nCOST:" + data.cost;
+        return infoText;
+    }
+
+    private string ShipInfo(ShipData data)
+    {
+        string infoText = data.name
+            + "\nHealth: " + data.health
+            + "\nArmor: " + data.armor
+            + "\nRegeneration: " + data.regeneration
+            + "\nAcceleration: " + data.acceleration
+            + "\nCOST:" + data.cost;
+        return infoText;
     }
 
     public void Buy()

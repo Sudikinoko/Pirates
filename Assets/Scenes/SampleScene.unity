@@ -624,6 +624,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a511126f5f6f4449ec80434dc3dfe8, type: 3}
+--- !u!114 &450567640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6888570926471124850, guid: 2b2b77c6cbc962441b5ff71090ea68ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 6888570925963246630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &507048049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 412076, guid: cae8e749c8d3eb44da3bdd1e6c9f42fd,
@@ -2936,6 +2948,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6888570927406141090, guid: 2b2b77c6cbc962441b5ff71090ea68ba,
+        type: 3}
+      propertyPath: buyButton
+      value: 
+      objectReference: {fileID: 450567640}
     - target: {fileID: 6888570927406141091, guid: 2b2b77c6cbc962441b5ff71090ea68ba,
         type: 3}
       propertyPath: m_RootOrder
@@ -3163,6 +3180,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232999054808867016, guid: 56cae5c10a13a264d8f9162ef09bacd9,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.36271805
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232999054808867016, guid: 56cae5c10a13a264d8f9162ef09bacd9,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.36271805
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232999054808867016, guid: 56cae5c10a13a264d8f9162ef09bacd9,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.3679245
       objectReference: {fileID: 0}
     - target: {fileID: 2579162779070457776, guid: 56cae5c10a13a264d8f9162ef09bacd9,
         type: 3}
