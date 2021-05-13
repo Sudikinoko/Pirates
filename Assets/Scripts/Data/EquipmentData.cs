@@ -38,7 +38,7 @@ public class EquipmentData : ScriptableObject
     public float cost;
     public bool unlocked;
     [Range(1, 5)]
-    public int minNodeSize;
+    public int minNodeSize = 1;
 
     public GameObject prefab;
 

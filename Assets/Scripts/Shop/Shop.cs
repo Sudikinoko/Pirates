@@ -52,7 +52,12 @@ public class Shop : MonoBehaviour
             node.RemoveEquipment();
         }
 
-        Instantiate(selectedEquipmentData.prefab, playerTransform.position, playerTransform.rotation);
+        GameObject newShip = Instantiate(selectedEquipmentData.prefab, playerTransform.position, playerTransform.rotation);
+        if (newShip.GetComponent<Ship>() != null)
+        {
+            newShip.GetComponent<Ship>().shipData = (ShipData)selectedEquipmentData;
+        }
+
         DestroyImmediate(playerTransform.gameObject);
 
         CameraController.instance.InitiateShipParameter();

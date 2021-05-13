@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum CameraState
 {
@@ -49,6 +50,10 @@ public class CameraController : MonoBehaviour
     public float zoomOutMin = 1;
     public float zoomOutMax = 800;
 
+    private bool isPaning = true;
+    private bool isPanMode = true;
+    private bool reachedConstructPoint = false;
+
     public void Awake()
     {
         if (instance == null)
@@ -86,8 +91,15 @@ public class CameraController : MonoBehaviour
 
     void Zoom()
     {
+        //Nur beim ersten Frame true
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            isPaning = true;
+        }
         if (Input.touchCount == 2)
         {
+            isPaning = false;
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
 
@@ -101,6 +113,10 @@ public class CameraController : MonoBehaviour
 
             ZoomInOut(difference * 0.1f);
         }
+        else if (isPaning && (cameraState != CameraState.ZoomedOut || isPanMode))
+        {
+            Pan();
+        }
         ZoomInOut(Input.GetAxis("Mouse ScrollWheel"));
     }
 
@@ -111,17 +127,15 @@ public class CameraController : MonoBehaviour
 
     private void Pan()
     {
-        //Nur beim ersten Frame true
-        if (Input.GetMouseButtonDown(0))
+        if (EventSystem.current.IsPointerOverGameObject())
         {
-            touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            return;
         }
         if (Input.GetMouseButton(0))
         {
             Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position += direction;
         }
-
     }
 
 
@@ -143,8 +157,12 @@ public class CameraController : MonoBehaviour
 
     private void ConstructModeUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, constructionModeTransform.position, smoothFactorConstruction);
-        transform.rotation = constructionModeTransform.rotation;
+        if (!reachedConstructPoint)
+        {
+            transform.position = Vector3.Lerp(transform.position, constructionModeTransform.position, smoothFactorConstruction);
+            transform.rotation = constructionModeTransform.rotation;
+            reachedConstructPoint = Vector3.Distance(transform.position, constructionModeTransform.position) <= 1f;
+        }
         Zoom();
     }
 
@@ -166,20 +184,25 @@ public class CameraController : MonoBehaviour
         {
             case CameraState.ZoomedOut:
                 Camera.main.orthographic = true;
-                Camera.main.orthographicSize = 150f;
+                Camera.main.orthographicSize = playerShip.shipData.cameraZoomedOutSize;
+                isPanMode = !isPanMode;
                 cameraUpdate = ZoomedOutUpdate;
                 break;
             case CameraState.ZoomedIn:
                 Camera.main.orthographic = false;
+                isPanMode = true;
                 cameraUpdate = ZoomedInUpdate;
                 break;
             case CameraState.ConstructMode:
                 Camera.main.orthographic = true;
-                Camera.main.orthographicSize = 20f;
+                Camera.main.orthographicSize = playerShip.shipData.cameraConstructionSize;
+                reachedConstructPoint = false;
+                isPanMode = true;
                 cameraUpdate = ConstructModeUpdate;
                 break;
             case CameraState.Shop:
                 Camera.main.orthographic = false;
+                isPanMode = true;
                 cameraUpdate = ShopUpdate;
                 break;
         }

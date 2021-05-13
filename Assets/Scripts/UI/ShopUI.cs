@@ -137,6 +137,8 @@ public class ShopUI : MonoBehaviour
     {
         string infoText = data.name
             + "\nHealth: " + data.health
+            + "\nWeapons Slots: " + data.weaponAmount
+            + "\nUtility Slots: " + data.utilityAmount
             + "\nArmor: " + data.armor
             + "\nRegeneration: " + data.regeneration
             + "\nAcceleration: " + data.acceleration

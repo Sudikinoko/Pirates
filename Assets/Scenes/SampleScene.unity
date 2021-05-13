@@ -1533,36 +1533,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8b6fde0ab569f147aad7630f6f09f07, type: 3}
---- !u!1 &1180962545
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1180962546}
-  m_Layer: 0
-  m_Name: Respawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1180962546
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180962545}
-  m_LocalRotation: {x: -0, y: -0.47724092, z: -0, w: 0.87877244}
-  m_LocalPosition: {x: -0.2856, y: 0.99167216, z: -0.2992}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1387137266}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -57.011, z: 0}
 --- !u!4 &1182148509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 460218, guid: e8b6fde0ab569f147aad7630f6f09f07,
@@ -2737,11 +2707,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6795386100408103241, guid: 40450b09a9deff54980af7d3bf7a9825,
-        type: 3}
-      propertyPath: respawn
-      value: 
-      objectReference: {fileID: 1180962546}
     - target: {fileID: 6795386100408103242, guid: 40450b09a9deff54980af7d3bf7a9825,
         type: 3}
       propertyPath: m_Name
@@ -2805,45 +2770,14 @@ PrefabInstance:
     - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
         type: 3}
       propertyPath: shopItems.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
-        type: 3}
-      propertyPath: shopItems.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 95c7fece4b52d2e4eb66b12c0b512572,
-        type: 2}
-    - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
-        type: 3}
-      propertyPath: shopItems.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 80954235d1b2aff48a694d7130e77721,
-        type: 2}
     - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
         type: 3}
       propertyPath: shopItems.Array.data[4]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
-        type: 3}
-      propertyPath: shopItems.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
-        type: 3}
-      propertyPath: shopItems.Array.data[6]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
-        type: 3}
-      propertyPath: shopItems.Array.data[7]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6795386101908741540, guid: 40450b09a9deff54980af7d3bf7a9825,
-        type: 3}
-      propertyPath: shopItems.Array.data[8]
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: bbe57da8b25ced94fb174690f8cb0073,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40450b09a9deff54980af7d3bf7a9825, type: 3}
 --- !u!1001 &6888570925963246630

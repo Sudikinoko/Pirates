@@ -143,19 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2cadfd1f2a189a48b734e46a930ff7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipData: {fileID: 11400000, guid: 95c7fece4b52d2e4eb66b12c0b512572, type: 2}
   weaponNodes: []
   utilityNodes: []
   weaponAmount: 0
   utilityAmount: 0
-  startHealth: 5
-  startArmor: 0
-  startRegeneration: 0
-  startSpeed: 30
-  startAcceleration: 80
-  startTurningRate: 1
-  startMass: 100
-  startDrag: 0.1
-  startAngularDrag: 0.5
   value: 2
   enemyTags:
   - Enemy

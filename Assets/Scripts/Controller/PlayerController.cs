@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         transform.position = homeBase.respawn.position;
         transform.rotation = homeBase.respawn.rotation;
         PlayerStats.instance.RemoveMoney(PlayerStats.instance.GetCurrentMoneyAmount() / 2);
-        ship.Heal(ship.startHealth);
+        ship.Heal(ship.shipData.health);
 
     }
 

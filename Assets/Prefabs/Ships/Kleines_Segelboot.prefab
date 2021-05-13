@@ -214,9 +214,9 @@ MonoBehaviour:
   utilityNodes: []
   weaponAmount: 2
   utilityAmount: 0
-  startHealth: 10
+  startHealth: 15
   startArmor: 0
-  startRegeneration: 0.1
+  startRegeneration: 0
   startSpeed: 30
   startAcceleration: 700
   startTurningRate: 0.5

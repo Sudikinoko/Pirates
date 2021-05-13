@@ -5,22 +5,14 @@ using UnityEngine.UI;
 
 public class Ship : MonoBehaviour, IHittable
 {
+
+    public ShipData shipData;
+
     public WeaponNode[] weaponNodes;
     public UtilityNode[] utilityNodes;
 
     public int weaponAmount;
     public int utilityAmount;
-
-    public float startHealth = 10f;
-    public float startArmor = 0f;
-    public float startRegeneration = 0f;
-    public float startSpeed = 30f;
-    public float startAcceleration = 10f;
-    public float startTurningRate = 0.5f;
-    public float startMass = 1f;
-    public float startDrag = 0.3f;
-    public float startAngularDrag = 0.5f;
-
 
     float health;
     float armor;
@@ -32,7 +24,7 @@ public class Ship : MonoBehaviour, IHittable
     float drag;
     float angularDrag;
 
-    public float value; //Price | LootAmount,...
+
 
     public List<string> enemyTags = new List<string>(new[] { "Enemy" });
 
@@ -98,6 +90,7 @@ public class Ship : MonoBehaviour, IHittable
 
         Regenerate();
         RenderHealthBar();
+        UpdateSpeedBar();
     }
 
     public void CheckIfPlayerControlled()
@@ -107,15 +100,15 @@ public class Ship : MonoBehaviour, IHittable
 
     void InitiateStartValues()
     {
-        health = startHealth;
-        armor = startArmor;
-        regeneration = startRegeneration;
-        speed = startSpeed;
-        acceleration = startAcceleration;
-        turningRate = startTurningRate;
-        mass = startMass;
-        drag = startDrag;
-        angularDrag = startAngularDrag;
+        health = shipData.health;
+        armor = shipData.armor;
+        regeneration = shipData.regeneration;
+        speed = shipData.speed;
+        acceleration = shipData.acceleration;
+        turningRate = shipData.turningRate;
+        mass = shipData.mass;
+        drag = shipData.drag;
+        angularDrag = shipData.angularDrag;
     }
 
     void InitiateCameraPoints()
@@ -214,16 +207,23 @@ public class Ship : MonoBehaviour, IHittable
 
     void UpdateHealthBar()
     {
-
         if (playerControlled)
         {
-            GameUI.instance.UpdadeHealthBar(health, startHealth);
+            GameUI.instance.UpdadeHealthBar(health, shipData.health);
             return;
         }
 
         if (statusBar != null && healthBarImage != null)
         {
-            healthBarImage.fillAmount = health / startHealth;
+            healthBarImage.fillAmount = health / shipData.health;
+        }
+    }
+
+    void UpdateSpeedBar()
+    {
+        if (playerControlled && rigidBody != null)
+        {
+            GameUI.instance.UpdateSpeed(rigidBody.velocity.magnitude);
         }
     }
 
@@ -279,9 +279,9 @@ public class Ship : MonoBehaviour, IHittable
     {
         health += heal;
 
-        if (health >= startHealth)
+        if (health >= shipData.health)
         {
-            health = startHealth;
+            health = shipData.health;
         }
         UpdateHealthBar();
     }
@@ -293,11 +293,12 @@ public class Ship : MonoBehaviour, IHittable
         ICollector collector = killer.GetComponent<ICollector>();
         if (collector != null)
         {
-            collector.AddMoney(value);
+            int bounty = (int)Random.Range(shipData.minValue, shipData.maxValue);
+            collector.AddMoney(bounty);
             if (bountyEffect != null)
             {
                 GameObject effect = Instantiate(bountyEffect, transform.position, Quaternion.identity);
-                effect.GetComponent<BountyUI>().StartBountyAnimation(value.ToString());
+                effect.GetComponent<BountyUI>().StartBountyAnimation(bounty.ToString());
             }
         }
 

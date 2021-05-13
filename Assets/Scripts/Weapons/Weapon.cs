@@ -20,7 +20,8 @@ public class Weapon : MonoBehaviour
 
     public WeaponData weaponData;
 
-    private Quaternion localStartRotation;
+    private Quaternion localStartRotationHorizontal;
+    private Quaternion localStartRotationVertical;
     [HideInInspector]
     public GameObject weaponNode;
 
@@ -38,7 +39,8 @@ public class Weapon : MonoBehaviour
     public List<string> enemyTags = new List<string>(new[] { "Enemy" });
 
 
-    public Transform partToRotate;
+    public Transform partToRotateHorizontal;
+    public Transform partToRotateVertical;
 
     public Transform firePoint;
     public Transform fireEffectPoint;
@@ -47,7 +49,8 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        localStartRotation = partToRotate.localRotation;
+        localStartRotationHorizontal = partToRotateHorizontal.localRotation;
+        localStartRotationVertical = partToRotateVertical.localRotation;
         InvokeRepeating("UpdateTarget", 0f, 0.2f);
         fireCooldown = 0f;
     }
@@ -67,7 +70,7 @@ public class Weapon : MonoBehaviour
         {
             Vector3 targetDirection = target.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            float angle = Quaternion.Angle(partToRotate.rotation, targetRotation);
+            float angle = Quaternion.Angle(partToRotateHorizontal.rotation, targetRotation);
 
             if (angle <= weaponData.fireAngle && fireCooldown + weaponData.fireStartCooldown <= 0f)
             {
@@ -156,10 +159,10 @@ public class Weapon : MonoBehaviour
         {
             Vector3 dir = target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.RotateTowards(partToRotate.rotation, lookRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
-            partToRotate.rotation = Quaternion.Euler(weaponData.xLocked ? 0f : rotation.x, weaponData.yLocked ? 0f : rotation.y, weaponData.zLocked ? 0f : rotation.z);
+            Vector3 rotation = Quaternion.RotateTowards(partToRotateHorizontal.rotation, lookRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
+            partToRotateHorizontal.rotation = Quaternion.Euler(weaponData.xLocked ? 0f : rotation.x, weaponData.yLocked ? 0f : rotation.y, weaponData.zLocked ? 0f : rotation.z);
 
-            Vector3 localRotation = partToRotate.localRotation.eulerAngles;
+            Vector3 localRotation = partToRotateHorizontal.localRotation.eulerAngles;
 
             if (localRotation.y < 180)
             {
@@ -170,13 +173,13 @@ public class Weapon : MonoBehaviour
                 localRotation.y = Mathf.Clamp(localRotation.y, 360 - weaponData.turnAngle, 360);
             }
 
-            partToRotate.localRotation = Quaternion.Euler(weaponData.xLocked ? 0f : localRotation.x, weaponData.yLocked ? 0f : localRotation.y, weaponData.zLocked ? 0f : localRotation.z);
+            partToRotateHorizontal.localRotation = Quaternion.Euler(weaponData.xLocked ? 0f : localRotation.x, weaponData.yLocked ? 0f : localRotation.y, weaponData.zLocked ? 0f : localRotation.z);
 
         }
         else
         {
-            Vector3 rotation = Quaternion.RotateTowards(partToRotate.localRotation, localStartRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
-            partToRotate.localRotation = Quaternion.Euler(weaponData.xLocked ? 0f : rotation.x, weaponData.yLocked ? 0f : rotation.y, weaponData.zLocked ? 0f : rotation.z);
+            Vector3 rotation = Quaternion.RotateTowards(partToRotateHorizontal.localRotation, localStartRotationHorizontal, Time.deltaTime * weaponData.turnRate).eulerAngles;
+            partToRotateHorizontal.localRotation = Quaternion.Euler(weaponData.xLocked ? 0f : rotation.x, weaponData.yLocked ? 0f : rotation.y, weaponData.zLocked ? 0f : rotation.z);
 
         }
     }
@@ -217,17 +220,17 @@ public class Weapon : MonoBehaviour
         if (target == null)
             return;
 
-        Vector3 dir = target.position - partToRotate.position;
+        Vector3 dir = target.position - partToRotateHorizontal.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Quaternion localLookRotation = Quaternion.Inverse(partToRotate.rotation) * lookRotation;
-        Vector3 localRotation = Quaternion.Lerp(partToRotate.localRotation, localLookRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
+        Quaternion localLookRotation = Quaternion.Inverse(partToRotateHorizontal.rotation) * lookRotation;
+        Vector3 localRotation = Quaternion.Lerp(partToRotateHorizontal.localRotation, localLookRotation, Time.deltaTime * weaponData.turnRate).eulerAngles;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(partToRotate.position, partToRotate.position + dir);
+        Gizmos.DrawLine(partToRotateHorizontal.position, partToRotateHorizontal.position + dir);
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(partToRotate.position, lookRotation * Vector3.forward * 10);
+        Gizmos.DrawRay(partToRotateHorizontal.position, lookRotation * Vector3.forward * 10);
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(partToRotate.position, partToRotate.forward * 10);
+        Gizmos.DrawRay(partToRotateHorizontal.position, partToRotateHorizontal.forward * 10);
     }
 
     void OnDrawGizmosSelected()

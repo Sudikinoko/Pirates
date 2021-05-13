@@ -12,13 +12,26 @@ public class Base : MonoBehaviour
     public bool isShop = true;
     public bool isShipyard = true;
 
+    public float healPerSecond = 10f;
+    private bool isHealing = false;
+
     public Shop shop;
+
+    private Ship playerShip;
 
     // Start is called before the first frame update
     void Start()
     {
         gameUI = GameUI.instance;
         shopUI = ShopUI.instance;
+    }
+
+    void Update()
+    {
+        if (isHealing)
+        {
+            playerShip.Heal(healPerSecond * Time.deltaTime);
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -38,8 +51,9 @@ public class Base : MonoBehaviour
             {
                 gameUI.EnableConstruction();
             }
+            playerShip = playerController.GetComponent<Ship>();
             playerController.SetHomeBase(this);
-            playerController.GetComponent<Ship>().Heal(float.PositiveInfinity);
+            isHealing = true;
         }
 
     }
@@ -52,6 +66,7 @@ public class Base : MonoBehaviour
             shopUI.ui.SetActive(false);
             gameUI.DisableShop();
             gameUI.DisableConstruction();
+            isHealing = false;
         }
 
     }

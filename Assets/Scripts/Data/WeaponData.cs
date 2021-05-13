@@ -16,6 +16,7 @@ public class WeaponData : EquipmentData
     [Header("Attributes")]
     public float range = 50f;
     public float dmg = 1f;
+    public float fireRate = 1f;
     public bool focusTarget = true;
 
 
@@ -37,7 +38,6 @@ public class WeaponData : EquipmentData
 
     [Header("Use Bullets (default)")]
     public GameObject ammoPrefab;
-    public float fireRate = 1f;
     public float fireStartCooldown = 0f;
     public float bulletSpeed = 100f;
 

@@ -22,12 +22,13 @@ MonoBehaviour:
   type: 0
   cost: 5
   unlocked: 0
-  minNodeSize: 0
+  minNodeSize: 1
   prefab: {fileID: 9069566170013735613, guid: 467844df566482b479e2cba6e0cb59f5, type: 3}
   buildEffect: {fileID: 0}
   attackType: 0
   range: 200
   dmg: 1
+  fireRate: 0.5
   focusTarget: 1
   turnAngle: 25
   turnRate: 20
@@ -41,7 +42,6 @@ MonoBehaviour:
   zLocked: 0
   ammoPrefab: {fileID: 3730163994860281038, guid: 092d8e6b5e33d7246b3d3cdb4c2776b1,
     type: 3}
-  fireRate: 0.5
   fireStartCooldown: 0
   bulletSpeed: 120
   laserweapon: 0

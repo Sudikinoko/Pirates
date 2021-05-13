@@ -19,6 +19,7 @@ public class GameUI : MonoBehaviour
 
     public Image healthBar;
     public TextMeshProUGUI playerHealthText;
+    public TextMeshProUGUI playerSpeedText;
 
     // Start is called before the first frame update
     void Awake()
@@ -58,6 +59,11 @@ public class GameUI : MonoBehaviour
     {
         healthBar.fillAmount = health / maxHealth;
         playerHealthText.text = health.ToString("F0") + "/" + maxHealth.ToString("F0");
+    }
+
+    public void UpdateSpeed(float speed)
+    {
+        playerSpeedText.text = "Speed: " + speed.ToString("F2");
     }
 
     public void UpdateCoins()

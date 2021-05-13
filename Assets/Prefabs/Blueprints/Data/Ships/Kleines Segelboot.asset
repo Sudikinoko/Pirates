@@ -25,6 +25,18 @@ MonoBehaviour:
   minNodeSize: 0
   prefab: {fileID: 3621361048046770345, guid: 208717bc2aa41454f95132373afdf598, type: 3}
   buildEffect: {fileID: 0}
-  type: 0
   cameraConstructionSize: 10
   zoomedOutSize: 100
+  weaponAmount: 2
+  utilityAmount: 0
+  health: 15
+  armor: 0
+  regeneration: 0
+  speed: 30
+  acceleration: 700
+  turningRate: 0.5
+  mass: 500
+  drag: 0.2
+  angularDrag: 0.5
+  minValue: 3
+  maxValue: 7

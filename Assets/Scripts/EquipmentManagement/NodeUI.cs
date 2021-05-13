@@ -63,7 +63,7 @@ public class NodeUI : MonoBehaviour
 
     public void PopulateNodeUI()
     {
-        ClearShop();
+        ClearNode();
 
         List<EquipmentData> equipmentBlueprints = inventoryManager.GetEquipmentList();
 
@@ -91,9 +91,9 @@ public class NodeUI : MonoBehaviour
         string infoText = data.name
             + "\nRange: " + data.range
             + "\nDamage: " + data.dmg
-            + "\nFireRate: " + data.fireRate
-            + "\nTurnRadius: " + data.turnAngle
-            + "\nTurningSpeed: " + data.turnRate;
+            + "\nFire Rate: " + data.fireRate
+            + "\nTurn Radius: " + data.turnAngle
+            + "\nTurning Speed: " + data.turnRate;
         return infoText;
     }
 
@@ -111,7 +111,7 @@ public class NodeUI : MonoBehaviour
         SelectEquipmentToBuild(equipment);
     }
 
-    public void ClearShop()
+    public void ClearNode()
     {
         foreach (Transform child in itemContainer)
         {
@@ -148,12 +148,14 @@ public class NodeUI : MonoBehaviour
     {
         target.Equip();
         equipmentManager.DeselectNode();
+        PopulateNodeUI();
     }
 
     public void Remove()
     {
         target.RemoveEquipment();
         removeButton.interactable = false;
+        PopulateNodeUI();
     }
 
 }

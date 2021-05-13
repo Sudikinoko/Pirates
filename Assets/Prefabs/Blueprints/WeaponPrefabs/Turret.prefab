@@ -434,6 +434,7 @@ MonoBehaviour:
   impactLight: {fileID: 0}
   enemyTags:
   - Enemy
-  partToRotate: {fileID: 519790984417513122}
+  partToRotateHorizontal: {fileID: 519790984417513122}
+  partToRotateVertical: {fileID: 519790984417513122}
   firePoint: {fileID: 5998693353208492795}
   fireEffectPoint: {fileID: 4464720591556337778}
