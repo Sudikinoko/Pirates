@@ -33,7 +33,7 @@ MonoBehaviour:
   armor: 0
   regeneration: 0.01
   speed: 40
-  acceleration: 1500
+  acceleration: 2000
   turningRate: 0.4
   mass: 1000
   drag: 0.2
