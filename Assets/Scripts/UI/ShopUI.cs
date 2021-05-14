@@ -163,7 +163,7 @@ public class ShopUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (Transform child in shopContainerWeapons)
+        foreach (Transform child in shopContainerShips)
         {
             Destroy(child.gameObject);
         }
