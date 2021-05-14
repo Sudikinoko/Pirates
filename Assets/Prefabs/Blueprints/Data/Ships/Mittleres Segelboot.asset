@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03e618ab293d0c541a33e122ee5a2eff, type: 3}
-  m_Name: Kleines Segelboot
+  m_Name: Mittleres Segelboot
   m_EditorClassIdentifier: 
-  name: Kleines Segelboot
+  name: Mittleres Segelboot
   amount: 0
-  description: Etwas schneller
-  inventoryImage: {fileID: 21300000, guid: da09804303305f542a686824630e7269, type: 3}
+  description: 
+  inventoryImage: {fileID: 21300000, guid: 76aaead5acfa7514d9a1182183d2d3dd, type: 3}
   Border: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  rarity: 0
+  rarity: 1
   type: 2
   cost: 0
   unlocked: 0
-  minNodeSize: 0
-  prefab: {fileID: 3621361048046770345, guid: 208717bc2aa41454f95132373afdf598, type: 3}
+  minNodeSize: 1
+  prefab: {fileID: 4298909806982823089, guid: 78cbaec4642135349ac2ea008229e3a4, type: 3}
   buildEffect: {fileID: 0}
-  cameraConstructionSize: 10
+  cameraConstructionSize: 15
   cameraZoomedOutSize: 100
-  weaponAmount: 2
+  weaponAmount: 4
   utilityAmount: 0
-  health: 15
+  health: 30
   armor: 0
-  regeneration: 0
-  speed: 30
-  acceleration: 700
-  turningRate: 0.5
-  mass: 500
+  regeneration: 0.01
+  speed: 40
+  acceleration: 1500
+  turningRate: 0.4
+  mass: 1000
   drag: 0.2
   angularDrag: 0.5
-  minValue: 3
-  maxValue: 7
+  minValue: 10
+  maxValue: 15

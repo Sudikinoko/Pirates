@@ -119,9 +119,9 @@ public class ShopUI : MonoBehaviour
         string infoText = data.name
             + "\nRange: " + data.range
             + "\nDamage: " + data.dmg
-            + "\nFireRate: " + data.fireRate
-            + "\nTurnRadius: " + data.turnAngle
-            + "\nTurningSpeed: " + data.turnRate
+            + "\nFire Rate: " + data.fireRate
+            + "\nTurn Radius: " + data.turnAngle
+            + "\nTurning Speed: " + data.turnRate
             + "\nCOST:" + data.cost;
         return infoText;
     }

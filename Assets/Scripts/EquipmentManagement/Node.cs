@@ -107,7 +107,10 @@ public class Node : MonoBehaviour
 
     public void RemoveEquipment()
     {
-        inventoryManager.AddEquipment(oldEquipmentData);
+        if (oldEquipmentData != null)
+        {
+            inventoryManager.AddEquipment(oldEquipmentData);
+        }
         oldEquipmentData = null;
         Destroy(equipment);
     }
