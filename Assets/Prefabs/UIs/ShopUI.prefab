@@ -1788,6 +1788,7 @@ MonoBehaviour:
   shopContainerUtility: {fileID: 6888570927364194984}
   shopContainerShips: {fileID: 6888570926479727019}
   target: {fileID: 0}
+  buyButton: {fileID: 6888570926471124850}
 --- !u!1 &6888570927562195452
 GameObject:
   m_ObjectHideFlags: 0

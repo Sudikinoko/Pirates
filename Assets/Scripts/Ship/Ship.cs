@@ -338,6 +338,7 @@ public class Ship : MonoBehaviour, IHittable
 
     public void Respawn()
     {
+        isDead = false;
         gameObject.GetComponent<PlayerController>().Die();
     }
 }
