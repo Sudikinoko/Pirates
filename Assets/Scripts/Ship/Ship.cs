@@ -233,7 +233,7 @@ public class Ship : MonoBehaviour, IHittable
         Vector3 targetDirection = targetPoint - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
-        if (!constructionMode)
+        if (!constructionMode && rigidBody != null)
         {
             Accelerate(targetDirection);
 

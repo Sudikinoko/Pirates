@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     CameraState cameraState = CameraState.ZoomedOut;
 
 
-    public Transform playerTransform;
+    Transform playerTransform;
 
     Ship playerShip;
 
