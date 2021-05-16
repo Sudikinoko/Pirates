@@ -37,6 +37,10 @@ public class MinimapCameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (playerTransform == null)
+        {
+            InitiateShipParameter();
+        }
         ZoomedOutUpdate();
     }
 

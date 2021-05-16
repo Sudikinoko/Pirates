@@ -14,15 +14,24 @@ public class Ship : MonoBehaviour, IHittable
     public int weaponAmount;
     public int utilityAmount;
 
-    float health;
-    float armor;
-    float regeneration;
-    float speed;
-    float acceleration;
-    float turningRate;
-    float mass;
-    float drag;
-    float angularDrag;
+    [HideInInspector]
+    public float health;
+    [HideInInspector]
+    public float armor;
+    [HideInInspector]
+    public float regeneration;
+    [HideInInspector]
+    public float speed;
+    [HideInInspector]
+    public float acceleration;
+    [HideInInspector]
+    public float turningRate;
+    [HideInInspector]
+    public float mass;
+    [HideInInspector]
+    public float drag;
+    [HideInInspector]
+    public float angularDrag;
 
 
 
@@ -63,6 +72,8 @@ public class Ship : MonoBehaviour, IHittable
     private Vector3 lastPosition;
 
     bool playerControlled = false;
+
+    IController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +120,8 @@ public class Ship : MonoBehaviour, IHittable
         mass = shipData.mass;
         drag = shipData.drag;
         angularDrag = shipData.angularDrag;
+
+        controller = GetComponent<IController>();
     }
 
     void InitiateCameraPoints()
@@ -248,6 +261,13 @@ public class Ship : MonoBehaviour, IHittable
 
     }
 
+    public void Accelerate(float amount)
+    {
+        Vector3 forceDirection = transform.forward;
+        rigidBody.AddForce(forceDirection * amount * acceleration * Time.fixedDeltaTime * 100f, ForceMode.Force);
+
+    }
+
     public void Turn(Quaternion targetRotation)
     {
         float maxSpeedRate = 1 - Mathf.Clamp01(rigidBody.velocity.magnitude / speed);
@@ -274,6 +294,7 @@ public class Ship : MonoBehaviour, IHittable
 
         }
         UpdateHealthBar();
+        controller.DamageFlag();
     }
     public void Heal(float heal)
     {

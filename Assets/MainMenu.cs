@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             //Output the current progress
-            text.text = "Loading progress: " + (asyncOperation.progress * 100) + "%";
+            text.text = "Loading progress: " + (asyncOperation.progress * 100).ToString("F0") + "%";
             yield return null;
         }
     }

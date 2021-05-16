@@ -50,6 +50,11 @@ public class GameUI : MonoBehaviour
         }
     }
 
+    public void AccelerationSliderChange(float amount)
+    {
+        playerController.AccelerationSliderChanged(amount);
+    }
+
     PlayerController FindPlayerController()
     {
         return GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();

@@ -172,6 +172,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -185,6 +190,16 @@ PrefabInstance:
 
         Good Luck, the rest
         is up to you.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 7990551638076321359, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
@@ -322,6 +337,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -335,6 +355,16 @@ PrefabInstance:
 
         Yea calculations and stuff,
         but you dont need to do it.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 7990551638076321359, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
@@ -472,6 +502,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -482,6 +517,16 @@ PrefabInstance:
       propertyPath: m_text
       value: Select the Weapon. Its green if you pressed it correctly. If not try
         again and again and again again again....
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 7990551638076321359, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
@@ -619,6 +664,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -629,6 +679,16 @@ PrefabInstance:
       propertyPath: m_text
       value: Press the "Construct" Button again or any other of the Button on the
         right to go back.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 7990551638076321359, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
@@ -766,6 +826,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -779,6 +844,16 @@ PrefabInstance:
 
         But
         now Good Luck Pirate, ARRRRRRRRRRR'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 7990551638076321359, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
@@ -916,6 +991,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -929,6 +1009,16 @@ PrefabInstance:
 
         If this screen blocks just pan the camera
         a bit. I believe in you!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 7990551638076321359, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
@@ -1066,6 +1156,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1076,6 +1171,16 @@ PrefabInstance:
       propertyPath: m_text
       value: Press the "Equip" Button. Tada you installed you first Weapon. I hope.
         (Or its a short game)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 7990551638076321359, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
@@ -1213,6 +1318,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404159209563979786, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035943721876671531, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1225,6 +1335,16 @@ PrefabInstance:
 
 
         Press the "Construct" Button. Do it!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785683697638994577, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883387454471471998, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 9153480722489337484, guid: 03badbb168b9f0f43ba8b869bc51b1eb,
         type: 3}

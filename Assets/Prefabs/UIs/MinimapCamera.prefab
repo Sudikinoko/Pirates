@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6512288908128879071}
-  m_LocalRotation: {x: 0.4170433, y: -0, z: -0, w: 0.9088867}
+  m_LocalRotation: {x: 0.41704237, y: 0, z: 0, w: 0.9088871}
   m_LocalPosition: {x: 0.92, y: 433, z: -372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -41,8 +41,8 @@ Camera:
   m_GameObject: {fileID: 6512288908128879071}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.074591845, g: 0, b: 0.745283, a: 0.79607844}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -59,13 +59,13 @@ Camera:
   far clip plane: 10000
   field of view: 90
   orthographic: 1
-  orthographic size: 300
+  orthographic size: 800
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 208
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 522ed63612d614c4da3493c5879e563b, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -87,5 +87,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f40d3e41fd46634c90f520d71235c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
   smoothFactorZoomedOut: 0.01
+  height: 500

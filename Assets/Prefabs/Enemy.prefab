@@ -149,6 +149,15 @@ MonoBehaviour:
   utilityNodes: []
   weaponAmount: 0
   utilityAmount: 0
+  health: 0
+  armor: 0
+  regeneration: 0
+  speed: 0
+  acceleration: 0
+  turningRate: 0
+  mass: 0
+  drag: 0
+  angularDrag: 0
   enemyTags:
   - Enemy
   deathEffect: {fileID: 0}
@@ -218,6 +227,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 100
+  shipType: 1
+  behaviorState: 0
+  attackStyle: 1
+  weaponRange: 100
+  warnRange: 200
+  chaseFactor: 5
 --- !u!1001 &1514666268373560739
 PrefabInstance:
   m_ObjectHideFlags: 0
