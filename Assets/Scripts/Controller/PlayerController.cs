@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 enum ControllStatus
 {
@@ -43,17 +42,17 @@ public class PlayerController : MonoBehaviour, IController
 
         if (Input.GetMouseButton(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                return;
-            }
+            //if (EventSystem.current.IsPointerOverGameObject())
+            //{
+            //    return;
+            //}
             Vector3 moveTo = GetMousePositionOnXZPlane();
             if (!moveTo.Equals(Vector3.zero))
             {
-                ship.MoveTo(moveTo);
+                ship.MoveTo(moveTo, controllStatus != ControllStatus.UI);
             }
         }
-        else if (controllStatus == ControllStatus.UI && rigidBody != null)
+        if (controllStatus == ControllStatus.UI && rigidBody != null)
         {
             ship.Accelerate(accelerationUISlider);
         }
@@ -100,7 +99,8 @@ public class PlayerController : MonoBehaviour, IController
         transform.rotation = homeBase.respawn.rotation;
         PlayerStats.instance.RemoveMoney(PlayerStats.instance.GetCurrentMoneyAmount() / 2);
         ship.Heal(ship.shipData.health);
-
+        rigidBody.velocity = Vector3.zero;
+        rigidBody.angularVelocity = Vector3.zero;
     }
 
 

@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721417650911503760}
-  m_LocalRotation: {x: 0.4170433, y: -0, z: -0, w: 0.9088867}
+  m_LocalRotation: {x: 0.41704237, y: 0, z: 0, w: 0.9088871}
   m_LocalPosition: {x: 0.92, y: 433, z: -372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -64,7 +64,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -96,12 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff97ef2c4109854587ba114c62c214c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
   shopTransform: {fileID: 0}
+  shopShipPosition: {fileID: 0}
   transitionSpeed: 0
   transitionRotationSpeed: 100
   rotationSpeed: 100
-  smoothFactorZoomedOut: 0.01
+  smoothFactorZoomedOut: 0.025
   smoothFactorZoomedIn: 0.025
   smoothFactorConstruction: 0.1
   smoothFactorShop: 0.5

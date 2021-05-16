@@ -28,7 +28,10 @@ public class CameraController : MonoBehaviour
     Transform zoomedOutTransform;
     Transform zoomedInTransform;
     Transform constructionModeTransform;
+    [HideInInspector]
     public Transform shopTransform;
+    [HideInInspector]
+    public Transform shopShipPosition;
 
     public float transitionSpeed;
     public float transitionRotationSpeed = 100f;
@@ -204,6 +207,8 @@ public class CameraController : MonoBehaviour
                 Camera.main.orthographic = false;
                 isPanMode = true;
                 cameraUpdate = ShopUpdate;
+                playerTransform.position = new Vector3(shopShipPosition.position.x, 0f, shopShipPosition.position.z);
+                playerTransform.rotation = shopShipPosition.rotation;
                 break;
         }
     }

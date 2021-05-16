@@ -38,5 +38,38 @@ MonoBehaviour:
   mass: 100
   drag: 0.2
   angularDrag: 0.5
+  turnHabit:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.04815674
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.973351
+      value: 0.49402067
+      inSlope: 1.482431
+      outSlope: 1.482431
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.036132675
+      outWeight: 0.99999774
+    - serializedVersion: 3
+      time: 1
+      value: 0.0045
+      inSlope: -43.044518
+      outSlope: -43.044518
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.033167373
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   minValue: 1
   maxValue: 5

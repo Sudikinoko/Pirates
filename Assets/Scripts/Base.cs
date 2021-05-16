@@ -16,6 +16,7 @@ public class Base : MonoBehaviour
     private bool isHealing = false;
 
     public Shop shop;
+    public Transform shopShipPosition;
 
     private Ship playerShip;
 
@@ -43,6 +44,7 @@ public class Base : MonoBehaviour
             {
                 gameUI.EnableShop();
                 Camera.main.GetComponent<CameraController>().shopTransform = shop.transform;
+                Camera.main.GetComponent<CameraController>().shopShipPosition = shopShipPosition;
                 shopUI.SetTarget(shop);
                 shopUI.ui.SetActive(true);
                 shop.PopulateShopUI();

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Turret MK2
   amount: 0
   description: Kills
-  inventoryImage: {fileID: 21300000, guid: 6fc27c9d7fc2d9448af6851bf935e6d2, type: 3}
+  inventoryImage: {fileID: 21300000, guid: 0d852f5493cecf94a90183f3f83ce947, type: 3}
   Border: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   rarity: 0
@@ -23,11 +23,11 @@ MonoBehaviour:
   cost: 30
   unlocked: 0
   minNodeSize: 1
-  prefab: {fileID: 9069566170013735613, guid: 467844df566482b479e2cba6e0cb59f5, type: 3}
+  prefab: {fileID: 5734108497032115818, guid: c8cd18347df3bed4f9d72ade5599688b, type: 3}
   buildEffect: {fileID: 0}
   attackType: 0
   range: 350
-  dmg: 1
+  dmg: 3
   fireRate: 1.5
   focusTarget: 1
   turnAngle: 50

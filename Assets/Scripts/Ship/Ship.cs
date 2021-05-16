@@ -62,7 +62,7 @@ public class Ship : MonoBehaviour, IHittable
     Rigidbody rigidBody;
     MeshCollider meshCollider;
     Vector3 targetPoint;
-    public AnimationCurve turnHabit;
+    AnimationCurve turnHabit;
 
     [Header("Camera")]
     public Transform zoomOutPosition;
@@ -120,6 +120,7 @@ public class Ship : MonoBehaviour, IHittable
         mass = shipData.mass;
         drag = shipData.drag;
         angularDrag = shipData.angularDrag;
+        turnHabit = shipData.turnHabit;
 
         controller = GetComponent<IController>();
     }
@@ -240,7 +241,7 @@ public class Ship : MonoBehaviour, IHittable
         }
     }
 
-    public void MoveTo(Vector3 targetPoint)
+    public void MoveTo(Vector3 targetPoint, bool shouldAccellerate)
     {
         this.targetPoint = targetPoint;
         Vector3 targetDirection = targetPoint - transform.position;
@@ -248,7 +249,10 @@ public class Ship : MonoBehaviour, IHittable
 
         if (!constructionMode && rigidBody != null)
         {
-            Accelerate(targetDirection);
+            if (shouldAccellerate)
+            {
+                Accelerate(targetDirection);
+            }
 
             Turn(targetRotation);
         }

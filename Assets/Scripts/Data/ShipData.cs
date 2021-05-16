@@ -21,6 +21,7 @@ public class ShipData : EquipmentData
     public float mass;
     public float drag;
     public float angularDrag;
+    public AnimationCurve turnHabit;
 
     [Header("Bounty")]
     public float minValue; //Price | LootAmount,...

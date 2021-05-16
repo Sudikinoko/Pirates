@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 802ac1b7e90d8ac48a5c4ca1962e8039, type: 3}
-  m_Name: Turret MK1
+  m_Name: BaseDefenceCannon
   m_EditorClassIdentifier: 
-  name: Turret MK1
+  name: 
   amount: 0
-  description: Kills
-  inventoryImage: {fileID: 21300000, guid: cc1940d6befa78a44aaa92ecf8644d76, type: 3}
+  description: 
+  inventoryImage: {fileID: 0}
   Border: {fileID: 0}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  rarity: 0
+  rarity: 2
   type: 0
-  cost: 20
+  cost: 0
   unlocked: 0
   minNodeSize: 1
-  prefab: {fileID: 9069566170013735613, guid: 467844df566482b479e2cba6e0cb59f5, type: 3}
+  prefab: {fileID: 0}
   buildEffect: {fileID: 0}
   attackType: 0
-  range: 300
-  dmg: 2
+  range: 200
+  dmg: 10
   fireRate: 1
   focusTarget: 1
-  turnAngle: 45
-  turnRate: 30
+  turnAngle: 180
+  turnRate: 20
   accuracy: 1
   fireAngle: 10
   mass: 1

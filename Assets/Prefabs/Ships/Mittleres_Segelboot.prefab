@@ -437,6 +437,15 @@ MonoBehaviour:
   utilityNodes: []
   weaponAmount: 0
   utilityAmount: 0
+  health: 0
+  armor: 0
+  regeneration: 0
+  speed: 0
+  acceleration: 0
+  turningRate: 0
+  mass: 0
+  drag: 0
+  angularDrag: 0
   enemyTags:
   - Enemy
   deathEffect: {fileID: 0}
@@ -445,33 +454,9 @@ MonoBehaviour:
   statusBarPrefab: {fileID: 0}
   healthBarDisplayPoint: {fileID: 0}
   constructionMode: 0
-  xLocked: 0
+  xLocked: 1
   yLocked: 0
-  zLocked: 0
-  turnHabit:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0008430481
-      value: 0.25057983
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.9983494
-      value: 0.7658063
-      inSlope: 1.4874729
-      outSlope: 1.4874729
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.034722906
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  zLocked: 1
   zoomOutPosition: {fileID: 7283619739096564355}
   zoomInPosition: {fileID: 1393247395392973291}
   constructionModePosition: {fileID: 8111010093126811899}

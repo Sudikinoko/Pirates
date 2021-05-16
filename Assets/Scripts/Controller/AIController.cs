@@ -103,7 +103,7 @@ public class AIController : MonoBehaviour, IController
             {
                 FindTarget();
             }
-            controlledShip.MoveTo(targetPoint);
+            controlledShip.MoveTo(targetPoint, true);
         }
     }
 
