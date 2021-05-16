@@ -52,6 +52,10 @@ public class GameUI : MonoBehaviour
 
     public void AccelerationSliderChange(float amount)
     {
+        if (playerController == null)
+        {
+            playerController = FindPlayerController();
+        }
         playerController.AccelerationSliderChanged(amount);
     }
 

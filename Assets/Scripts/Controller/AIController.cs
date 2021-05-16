@@ -82,7 +82,7 @@ public class AIController : MonoBehaviour, IController
             }
         }
 
-        if (controlledShip.health / controlledShip.shipData.health <= 0.3f)
+        if (shipType != ShipType.Boss && controlledShip.health / controlledShip.shipData.health <= 0.3f)
         {
             SetBehaviorStatus(BehaviorState.Flee);
         }
@@ -239,6 +239,7 @@ public class AIController : MonoBehaviour, IController
                 AIController aiController = hitCollider.GetComponent<AIController>();
                 if (aiController != null)
                 {
+                    Debug.Log("Warned a Friend");
                     aiController.SetBehaviorStatus(BehaviorState.Attack);
                     aiController.FindTarget();
                 }
